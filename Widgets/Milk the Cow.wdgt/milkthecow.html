@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Milk the Cow</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css" title="AppleStyle">
+        @import "milkthecow.css";
+
+        @import "Dazzle/Dazzle.css";
+    </style>
+</head>
+<body>
+    <div id="front">
+        <img id="cowimg" src="Images/cow_ex1.png" alt="cowimg" />
+        <div id="loading">
+            <img alt="loading" src="Images/ajax-loader.gif" />
+        </div>
+        <div id="inputDiv">
+        <input id='taskinput' placeholder='Add a task here'/>
+        <select id="taskinput_list">
+            <option value="">Inbox</option>
+        </select>
+        </div>
+        <div id="authDiv">
+            <span id="authurl" class="url">Click Here</span> to authenticate.
+        </div>
+        <div id="listDiv">
+            <ul id="taskList">
+                <li class="priority-1"><input type="checkbox" /><span class="taskname">milk the cow<span class="duedate">Today</span></span></li>
+                <li class="priority-2"><input type="checkbox" /><span class="taskname">Pirates versus Ninjas<span class="duedate">Wed @ 3:33 PM</span></span></li>
+                <li class="priority-3"><input type="checkbox" /><span class="taskname">Rickroll'd<span class="duedate">Aug 17</span></span></li>
+                <li class=""><input type="checkbox" /><span class="taskname">Fix the tubes<span class="duedate"> </span></span></li>
+            </ul>
+        </div>
+        <div id="listScrollbar"></div>
+        <div id="undo"></div>
+        <div id="info"></div>
+        <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="resizeMousedown(event);" alt=""/>
+        
+        <div id="taskDetails">
+            <div id="detailsDiv">
+                <a href='javascript:closeDetails()' title='Close' class='CloseX'>x</a>
+                <div id="detailsNameDiv">
+                  <a href='javascript:editName()' id='detailsName' class='detailsLink' title='Rename'></a>
+                  <input id="detailsName_edit" type="text" onblur="nameEdit()" onkeypress="enterKeyPress(event,nameEdit);" value="" />
+                </div>
+                <div id="detailsdue" class="detaildiv">
+                    <span class="highlight" title="Set Due Date" onclick="editDate()">Due: 
+                        <span class="field" id="detailsdue_span"></span>
+                      <input id="detailsdue_editfield" type="text" onblur="dateEdit()" onkeypress="enterKeyPress(event,dateEdit);" value=""/>
+                    </span>
+                </div>
+                <div id="detailslist" class="detaildiv">
+                  <span class="highlight" title="Change List" onclick="editList()">List:
+                    <span class="field" id="detailslist_span"></span>
+                    <select id="detailslist_select" onchange="listEdit();" onblur="listEdit();"></select>
+              </span>
+                </div>
+                <div id="detailstags" class="detaildiv">
+                  <span class="highlight" title="Set Tags" onclick="editTags()">Tags:
+                    <span class="field" id="detailstags_span"></span>
+                    <input id="detailstags_editfield" type="text" onblur="tagsEdit()" onkeypress="enterKeyPress(event,tagsEdit);" value=""/>
+              </span>
+                </div>
+              <div id="detailsurl" class="detaildiv">
+                  <span class="highlight" title="Set URL" onclick="editURL()">URL:
+                    <span class="field url" id="detailsurl_span"></span>
+                    <input id="detailsurl_editfield" type="text" onblur="urlEdit()" onkeypress="enterKeyPress(event,urlEdit);" value=""/>
+              </span>
+                </div>
+                <div id="more_details" class="url">more details &raquo;</div>
+            </div>
+        </div>
+    </div>
+    <div id="back">
+        <div id="magic">
+            Filters:
+            <div id="magicform">
+            <label for="magiclist" style="padding-left: 34px;">List</label>
+            <select id="magiclist" onchange="filterChange();">
+                <option value="">All</option>
+                <option disabled>---</option>
+            </select>
+            <label for="magicpriority" style="padding-left: 15px;">Priority</label>
+            <select id="magicpriority" onchange="filterChange();">
+                <option value="">All</option>
+                <option disabled>---</option>
+                <option value="priority:1">Priority 1</option>
+                <option value="priority:2">Priority 2</option>
+                <option value="priority:3">Priority 3</option>
+                <option value="priority:none">No Priority</option>
+            </select>
+            <label for="magicstatus" style="padding-left: 20px;">Status</label>
+            <select id="magicstatus" onchange="filterChange();">
+                <option value="">All</option>
+                <option disabled>---</option>
+                <option value="status:completed">Completed</option>
+                <option value="status:incomplete" selected>Incomplete</option>
+            </select>
+            <label for="magictext" style="padding-left: 0px;">Keywords</label>
+            <input type="text" id="magictext" size="21" onchange="filterChange();" onkeypress="filterKeyPress(event);"/>
+            <label for="magictags" style="padding-left: 27px;">Tags</label>
+            <input type="text" id="magictags" size="21" onchange="filterChange();" onkeypress="filterKeyPress(event);"/>
+            </div>
+        </div>
+        <div id="growlDiv">
+          <input type="checkbox" id="growl"/> <label for="growl">Enable Growl Notifications</label> <br/>
+          <label for="growlBefore">Reminder me</label> <input type="text" id="growlBefore" size="3" value="60"/> <label for="growlBefore">min before</label> 
+        </div>
+        <div id="custom">
+            Custom Filter:
+            <input type="text" id="customtext" value="status:incomplete" size="29" onkeypress="filterKeyPress(event);"/>
+        </div>
+        <div id="deauth">
+            <button disabled>deauthorize</button>
+        </div>
+        <div id="me">Milk the Cow by Rich Hong</div>
+        <div id="website">http://code.google.com/p/milkthecow/</div>
+        <div id="done"></div>
+    </div>
+    
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleScrollArea.js' charset='utf-8'></script>
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleScrollbar.js' charset='utf-8'></script>
+    <script type="text/javascript" src="jquery-1.4.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="md5.js" charset="utf-8"></script>
+    <script type="text/javascript" src="date.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Prefs.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Dazzle/Dazzle.js" charset="utf-8"></script>
+    <script type="text/javascript" src="rtm.js" charset="utf-8"></script>
+    <script type="text/javascript" src="milkthecow.js" charset="utf-8"></script>
+</body>
+</html>

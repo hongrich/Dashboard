@@ -1,0 +1,95 @@
+<!--
+Copyright ＿ 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+-->
+<html>
+<head>
+<style type="text/css" title="AppleStyle">
+	@import "Weather.css";
+</style>
+
+<script type='text/javascript' src='localizedStrings.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
+<script id='apple-replace-script' type='text/javascript' src='file:///System/Library/WidgetResources/.parsers/weatherParser.js' charset='utf-8'></script>
+<script type='text/javascript' src='Weather.js' charset='utf-8'></script>
+<script type='text/javascript' src='Zipcodes.js' charset='utf-8'></script>
+
+</head>
+<body onload='specialFirstLoad();' onunload='unload();'>
+	<div id='front'>
+		<div id='front-panel'>
+			<div id='top' class='background' onclick='toggleView(event);'></div>
+			<div id='middle' class='background' onclick='toggleView(event);'>
+				<div id='middle-contents'>
+					<img id='middle-img' width='100%' height='100%' src='Images/weather_day_middle.png' />
+					<img id='dayband' src='Images/forecast_dayband.png' />
+					<div id='day0' class='text day col0'></div>
+					<div id='day1' class='text day col1'></div>
+					<div id='day2' class='text day col2'></div>
+					<div id='day3' class='text day col3'></div>
+					<div id='day4' class='text day col4'></div>
+					<div id='day5' class='text day col5'></div>
+					<img id='icon0' class='smallicon col0' />
+					<img id='icon1' class='smallicon col1' />
+					<img id='icon2' class='smallicon col2' />
+					<img id='icon3' class='smallicon col3' />
+					<img id='icon4' class='smallicon col4' />
+					<img id='icon5' class='smallicon col5' />
+					<div id='hi0' class='text hi col0'></div>
+					<div id='hi1' class='text hi col1'></div>
+					<div id='hi2' class='text hi col2'></div>
+					<div id='hi3' class='text hi col3'></div>
+					<div id='hi4' class='text hi col4'></div>
+					<div id='hi5' class='text hi col5'></div>
+					<div id='low0' class='text low low-day-color col0'></div>
+					<div id='low1' class='text low low-day-color col1'></div>
+					<div id='low2' class='text low low-day-color col2'></div>
+					<div id='low3' class='text low low-day-color col3'></div>
+					<div id='low4' class='text low low-day-color col4'></div>
+					<div id='low5' class='text low low-day-color col5'></div>
+	
+					<img id='grid' src='Images/forecast_grid.png' />
+				</div>
+			</div>
+			<div id='bottom' class='background' onclick='toggleView(event);'>
+				<div style='position:relative;'>
+					<div id='infobutton' onclick='event.stopPropagation(); event.preventDefault();'></div> 
+				</div>
+			</div>
+			
+			<div id='high' class='text info smallinfo'></div>
+			<div id='location' class='text info'></div>
+			<div id='clickArea' class="text info"  onclick='goToURL(event);'></div>
+			<div id='lo' class='text info smallinfo'></div>
+			
+			<div id='temperature'>--</div>
+			<img id='degree' src='Images/degree.png' />
+			<img id='dot' src='Images/dot.png' />
+		</div>
+		<div id='icon-holder'></div>
+	</div>
+	<div id='back' onclick='backClicked(event);'>
+		<img src='Images/weather_backside.png' />
+		<div id='ziplabel' class='backlabel'></div>
+		<input id='zip' value='' oninput='zipTyping(event);' onkeypress='zipKeyPress(event);' />
+		<div id='unitlabel' class='backlabel'></div>
+		<select id='tempunits' onkeydown='unitsChanged(this);' onchange="unitsChanged(this);"></select>
+		<div id='validate' class='backlabel'></div>
+		<img id='yahooLogo' src='Images/yahoo.png' onclick='goToURL(event);' />
+		<img id='weatherDotComLogo' src='Images/weatherdotcom.png' onclick='goToWeatherDotCom(event);' />		
+		<div id='checkdiv' class='backlabel'>
+			<input type='checkbox' id='6daylow' onchange='lowChanged();' /><span id='lowtext' onclick='lowlabelclick(event);'></span>
+		</div>
+		<div id='done'></div>
+	</div>
+</body>
+</html>

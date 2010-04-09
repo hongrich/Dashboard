@@ -1,0 +1,647 @@
+/*
+Copyright (C) 2006, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+*/
+
+body {
+	margin: 0;
+}
+
+#iFrontSide {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 341px;
+	height: 215px;
+	display: block;
+}
+
+#iBackgroundPicture {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#iBackgroundOverlayIfScores {
+	position: absolute;
+	left: 9px;
+	top: 59px;
+	display: none;
+}
+
+#iLeagueTitle {
+	position: absolute;
+	top: 8px;
+	left: 76px;
+	font-family: "Helvetica Neue";
+	font-size: 17px;
+	color: white;
+	text-shadow: 0px 1px 0px rgb(64,64,64);
+	cursor: pointer;
+}
+
+.sButton {
+	position: absolute;
+	top: 34px;
+}
+
+.sButton-TextOff {
+	position: absolute;
+	top: 36px;
+	font-family: "Helvetica Neue";
+	font-size: 12px;
+	font-weight: bold;
+	color: rgb(204,204,204);
+	text-shadow: 2px 2px 0px rgb(29,31,27);
+	text-align: center;
+	width: 75px;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+.sButton-TextOn {
+	position: absolute;
+	top: 36px;
+	font-family: "Helvetica Neue";
+	font-size: 12px;
+	font-weight: bold;
+	color: rgb(89,89,89);
+	text-shadow: 2px 2px 0px rgb(255,255,255);
+	text-align: center;
+	width: 75px;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#iNewsButton {
+	left: 18px;
+}
+
+#iScoresButton {
+	left: 104px;
+}
+
+#iNewsButtonText {
+	left: 20px;
+}
+
+#iScoresButtonText {
+	left: 106px;
+}
+
+#iInfoButton {
+	position: absolute;
+	left: 312px;
+	top: 11px;
+	width: 13px;
+	height: 13px;
+}
+
+#iScoresHeaderContainer {
+	position: absolute;
+	top: 43px;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color: rgb(192,192,192);
+	text-shadow: 0px 1px 0px rgb(48,48,48);
+	text-align: left;
+	display: none;
+	width: 100%;
+}
+
+.sScoresHeader-golf-thru {
+	position: absolute;
+	left: 215px;
+	color: rgb(248,248,248);
+}
+
+.sScoresHeader-golf-score {
+	position: absolute;
+	left: 267px;
+	color: rgb(248,248,248);
+}
+
+.sScoresHeader-tennissingles-description {
+	position: absolute;
+	text-align: center;
+	left: 9px;
+	width: 323px;
+}
+
+.sScoresHeader-tennisdoubles-description {
+	position: absolute;
+	text-align: center;
+	left: 9px;
+	width: 323px;
+}
+
+#iScrollBar {
+	position: absolute;
+	left: 308px;
+	/* Specify top+bottom (not top+height) coord: the top (and thus height) is set by
+	   code and changes based on news-view vs. sports-view */
+	top: 0px;
+	bottom: 47px;
+}
+
+#iMiddleOfVaryingHeightContainer {
+	position: absolute;
+	/* Specify top+bottom (not top+height) coord: the top is set by code and changes based on news-view
+	   vs. sports-view, thus both the declarations here and the code both affect the final height, which,
+	   for scroll bar appearance/disappearance goodness, should be an even multiple of the heights of
+	   2-line or 1-line scores-list and 1-line news-list row-items.  The left coordinate sets the left-right
+	   basis for subordinate vertically scrollable area, which in turn forms the basis for the subordinate
+	   news or scores containers, which each have a subordinate data div that gets dynamically populated.
+	   There is a minor clip tweaking which occurs to effectively hide any item divider line near the top
+	   of the crawl area; this is also filled in by code. */
+	left: 9px;
+	top: 999px;
+	bottom: 999px;
+	width: 323px;
+	clip:rect(0px,999px,999px,0px);
+	overflow: hidden;
+}
+
+#iScrollableArea {
+	position: absolute;
+	/* Specify width and height at full range of this div's super-div in the html hierarchy;
+	   that super-div effectively does the positioning and clipping. */
+	width: 100%;
+	height: 100%;
+}
+
+#iNewsContainer {
+	position: relative;
+	/* Specify left to give all items a "margin"; note difference with Scores container. */
+	left: 9px;
+	display: none;
+}
+
+#iNewsMessage
+{
+	position: absolute;
+	left: 0px;
+	top: 41px;
+	width: 306px;
+	font: 14px "Helvetica Neue";
+	font-weight: bold;
+	text-shadow: 0px 1px 0px rgb(0,0,0);
+	color: white;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: none;
+	opacity: 1.0;
+}
+
+#iNewsData {
+	width: 306px;
+	overflow: hidden;
+	white-space: nowrap;
+	font: 11px "Helvetica Neue";
+	line-height: 9px;
+	font-weight: bold;
+	color: rgb(235,235,235);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sNewsHeadline {
+	overflow:hidden;
+	text-overflow: ellipsis;
+	height: 14px;
+}
+
+.sNewsHeadline:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#iScoresContainer {
+	position: relative;
+	/* Specify no left to give us full access all the way to the left edge; note difference with News container. */
+	display: none;
+}
+
+#iScoresMessage
+{
+	position: absolute;
+	left: 9px;
+	top: 40px;
+	width: 306px;
+	font: 14px "Helvetica Neue";
+	font-weight: bold;
+	text-shadow: 0px 1px 0px rgb(0,0,0);
+	color: white;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: none;
+	opacity: 1.0;
+}
+
+.sScoresListItem {
+	position: absolute;
+	/* Declare own top property; actual value set by code depending on item position. */
+	top: 0px;
+	/* Explicitly declare width property to be the full span of enclosure so that it occupies
+	   space, else we see nothing. */
+	width: 100%;
+	/* Declare own height property; actual value set by code depending on item-1row/2row-ness. */
+	height: 1px;
+}
+
+.sScoresListDivider-1row {
+	position: absolute;
+}
+
+.sScoresListDivider-2row {
+	position: absolute;
+}
+
+.sScoresListDividerExtender-1row {
+	position: absolute;
+	left: 302px;
+	top: 18px;
+	display: none;
+}
+
+.sScoresListDividerExtender-2row {
+	position: absolute;
+	left: 302px;
+	top: 37px;
+	display: none;
+}
+
+.sScoresListHighlighter {
+	position: absolute;
+	opacity: 0.4;
+	display: none;
+}
+
+.sScoresListWhenSpan-Common {
+	/* This declaration is programmatically combined with one of the sScoresListWhenSpan-*
+	   declarations below, and then it is combined with one of the kind-specific sScoresList-*-When
+	   declarations further below. */
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font: 11px "HelveticaNeue-CondensedBold";
+	font-weight: bold;
+}
+
+.sScoresListWhenSpan-RightJust {
+	/* This declaration is programmatically combined with one of the sScoresListWhenSpan-*
+	   declarations below, and then it is combined with one of the kind-specific sScoresList-*-When
+	   declarations further below. */
+	position: absolute;
+	width: 100%;
+	text-align: right;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font: 11px "HelveticaNeue-CondensedBold";
+	font-weight: bold;
+}
+
+.sScoresListWhenSpan-unknown {
+	display: none;
+}
+
+.sScoresListWhenSpan-upcoming {
+	color: rgb(138,138,138);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sScoresListWhenSpan-inprogress {
+	color: rgb(109,182,5);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sScoresListWhenSpan-final {
+	color: rgb(247,17,32);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sScoresList-Common-Team {
+	/* This declaration is programmatically combined with one of the more specific declarations below. */
+	position: absolute;
+	font: 11px "HelveticaNeue-Bold";
+	color: rgb(235,235,235);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sScoresList-Common-Score {
+	/* This declaration is programmatically combined with one of the more specific declarations below. */
+	position: absolute;
+	font: 12px "HelveticaNeue-CondensedBlack";
+	color: rgb(255,198,0);
+	text-shadow: 0px 1px 2px rgb(0,0,0);
+}
+
+.sScoresList-baseball-TeamA {
+	left: 10px;
+	top: 3px;
+}
+
+.sScoresList-baseball-TeamB {
+	left: 10px;
+	top: 20px;
+}
+
+.sScoresList-baseball-RHE-span {
+	float: left;
+	text-align: right;
+	width: 12px;
+	padding-right: 4px;
+}
+
+.sScoresList-baseball-RHEA {
+	left: 212px;
+	top: 3px;
+}
+
+.sScoresList-baseball-RHEB {
+	left: 212px;
+	top: 20px;
+}
+
+.sScoresList-baseball-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 237px;
+	width: 55px;
+	top: 11px;
+}
+
+.sScoresList-football-TeamA {
+	left: 10px;
+	top: 3px;
+}
+
+.sScoresList-football-TeamB {
+	left: 10px;
+	top: 20px;
+}
+
+.sScoresList-football-ScoreA {
+	left: 212px;
+	top: 3px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-football-ScoreB {
+	left: 212px;
+	top: 20px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-football-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 237px;
+	width: 55px;
+	top: 11px;
+}
+
+.sScoresList-basketball-TeamA {
+	left: 10px;
+	top: 3px;
+}
+
+.sScoresList-basketball-TeamB {
+	left: 10px;
+	top: 20px;
+}
+
+.sScoresList-basketball-ScoreA {
+	left: 212px;
+	top: 3px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-basketball-ScoreB {
+	left: 212px;
+	top: 20px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-basketball-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 237px;
+	width: 55px;
+	top: 11px;
+}
+
+.sScoresList-soccer-TeamA {
+	/* Specify right X coordinate, not left, so it is right-justified. */
+	right: 188px;
+	top: 2px;
+}
+
+.sScoresList-soccer-TeamB {
+	/* Specify left X coordinate, not right, so it is left-justified. */
+	left: 188px;
+	top: 2px;
+}
+
+.sScoresList-soccer-ScoresAB {
+	left: 145px;
+	top: 1px;
+	width: 34px;
+	text-align: center;
+}
+
+.sScoresList-soccer-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 241px;
+	width: 55px;
+	top: 2px;
+}
+
+.sScoresList-hockey-TeamA {
+	left: 10px;
+	top: 3px;
+}
+
+.sScoresList-hockey-TeamB {
+	left: 10px;
+	top: 20px;
+}
+
+.sScoresList-hockey-ScoreA {
+	left: 212px;
+	top: 3px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-hockey-ScoreB {
+	left: 212px;
+	top: 20px;
+	text-align: right;
+	width: 13px;
+}
+
+.sScoresList-hockey-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 237px;
+	width: 55px;
+	top: 11px;
+}
+
+.sScoresList-golf-Name {
+	left: 62px;
+	top: 2px;
+}
+
+.sScoresList-golf-Score {
+	/* Specify right, not left, so that this is right-justified. */
+	right: 48px;
+	top: 1px;
+}
+
+.sScoresList-golf-Start {
+	/* Specify right, not left, so that this is right-justified. */
+	right: 280px;
+	top: 1px;
+}
+
+.sScoresList-golf-Thru {
+	position: absolute;
+	left: 188px;
+	width: 55px;
+	top: 2px;
+}
+
+.sScoresList-racing-Driver {
+	left: 61px;
+	top: 2px;
+}
+
+.sScoresList-racing-Points {
+	/* Specify right, not left, so that this is right-justified. */
+	right: 38px;
+	top: 1px;
+}
+
+.sScoresList-racing-Rank {
+	/* Specify right, not left, so that this is right-justified. */
+	right: 280px;
+	top: 1px;
+}
+
+.sScoresList-tennissingles-NamesInfoLine {
+	left: 10px;
+	top: 3px;
+}
+
+.sScoresList-tennissingles-ScoresInfoLine {
+	left: 10px;
+	top: 20px;
+}
+
+.sScoresList-tennissingles-When {
+	/* Specify absolute/left/width here to control loc/centering; this will be combined with
+	   several declarations above. */
+	position: absolute;
+	left: 249px;
+	width: 55px;
+	top: 11px;
+}
+
+#iCrawlContainer {
+	position: absolute;
+	left: 12px;
+	top: 177px;
+	width: 316px;
+	height: 24px;
+	overflow: hidden;
+	opacity: 1.0;
+	cursor: arrow;
+}
+
+.sCrawlItem {
+	position: absolute;
+}
+
+.sCrawlItem-TypeMain {
+	padding-right: 10px;
+	font: 9px "MatrixTicker";
+	color: rgb(255,235,63);
+	text-shadow: 0pt 0pt 3pt rgb(255,235,63);
+	white-space: nowrap;
+}
+
+.sCrawlItem-TypeAlternate {
+	padding-right: 10px;
+	font: 9px "MatrixTicker";
+	color: rgb(255,32,63);
+	text-shadow: 0pt 0pt 3pt rgb(255,32,63);
+	white-space: nowrap;
+}
+
+.sCrawlItem-TypeSpacer {
+	padding-right: 10px;
+	font: 9px "MatrixTicker";
+	color: black;
+	white-space: nowrap;
+	opacity: 0.0;
+}
+
+.sCrawlItem-TypeNull {
+	color: black;
+	white-space: nowrap;
+	opacity: 0.0;
+}
+
+#iBackSide {
+	display: none;
+}
+
+#iSportPopupMenuTitle {
+	position: absolute;
+	left: 23px;
+	top: 75px;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color: white;
+}
+
+#iSportPopupMenu {
+	position: absolute;
+	left: 20px;
+	top: 89px;
+}
+
+#iEspnLogo {
+	position: absolute;
+	left: 222px;
+	top: 86px;
+	cursor: pointer;
+}
+
+#iDoneButton {
+	position: absolute;
+	top: 169px;
+	/* Specify right (not left) coord: so that varying lengths of localized button strings still look correct */
+	right: 20px;
+}

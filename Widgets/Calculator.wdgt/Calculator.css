@@ -1,0 +1,63 @@
+/*
+	Copyright © 2005, Apple Computer, Inc.  All rights reserved.
+	NOTE:  Use of this source code is subject to the terms of the Software
+	License Agreement for Mac OS X, which accompanies the code.  Your use
+	of this source code signifies your agreement to such license terms and
+	conditions.  Except as expressly granted in the Software License Agreement
+	for Mac OS X, no other copyright, patent, or other intellectual property
+	license or right is granted, either expressly or by implication, by Apple.
+*/
+
+body {
+	margin: 0;
+}
+
+#calcDisplay {
+	font: 20.25px "DBLCDTempBlack", HelveticaNeue, sans-serif;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	white-space: nowrap;
+	height: 18px;
+	-khtml-user-modify:read;
+	outline:none;
+//	border: 1px solid green;
+	line-height:23px;
+}
+
+#outerCalcDisplay {
+	position:absolute;
+	left: 22px;
+	width: 128px;
+	height: 18px;
+	top:18px;
+//	border: 1px solid red;
+
+}
+
+#lcd-backlight {
+	position:absolute;
+	left:13px; 
+	top:8px; 
+	display:none;
+}
+
+.nobacklightLCD {
+	color:#1A4B68;
+}
+
+.backlightLCD {
+	color:#20638B;
+}
+
+.button {
+	position: absolute;
+	-apple-dashboard-region: dashboard-region(control circle 0 0 0 0);
+}
+
+#equal {
+	-apple-dashboard-region:
+		dashboard-region(control circle 0 0 43px 0)
+		dashboard-region(control circle 43px 0 0 0)
+		dashboard-region(control rectangle 13px 0 13px 0);
+}

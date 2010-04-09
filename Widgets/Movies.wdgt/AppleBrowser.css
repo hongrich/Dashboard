@@ -1,0 +1,43 @@
+.AppleBrowser {
+	position:relative;
+	overflow:hidden;
+	border:1px solid gray;
+	height:119px;
+}
+
+.AppleBrowserCol {
+	position:absolute;
+	top:0; bottom:1px;
+	width:185px;
+}
+
+.AppleBrowserScroll {
+	position:absolute;
+	top:0; bottom:1px;
+	width:19px;
+	background:#eee;
+}
+
+.AppleBrowserCol ul, .AppleBrowserCol li {
+	margin:0; padding:0;
+	list-style-type:none;
+	overflow:hidden;
+}
+
+.AppleBrowser li {
+	height:18px;
+	margin:0; padding:1px 5px 0;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	border-bottom:1px solid silver;
+}
+
+.AppleBrowserCol .selected {
+	background:#ddd;
+}
+
+.AppleBrowserLeafCell {
+}
+
+.AppleBrowserParentCell {
+}

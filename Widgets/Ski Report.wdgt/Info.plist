@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowNetworkAccess</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Ski Report</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.widget.SkiReport</string>
+	<key>CFBundleName</key>
+	<string>SkiReport</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1</string>
+	<key>CFBundleVersion</key>
+	<string>1.1</string>
+	<key>CloseBoxInsetX</key>
+	<integer>10</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>48</integer>
+	<key>Height</key>
+	<integer>187</integer>
+	<key>MainHTML</key>
+	<string>SkiReport.html</string>
+	<key>Width</key>
+	<integer>275</integer>
+	<key>Parser</key>
+	<string>skiReportParser.js</string>
+
+	<key>SyncExclusions</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>http://www.apple.com/widgets/skiReportParser.js</string>
+			<key>global</key>
+			<true/>
+		</dict>
+	</array>
+</dict>
+</plist>

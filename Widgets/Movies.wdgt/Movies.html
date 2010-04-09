@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Movies</title>
+	<script type='text/javascript' src='localizedStrings.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleScrollbar.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleSlider.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
+	<script type='text/javascript' src='AppleBrowser.js'></script>
+	<script id='apple-replace-script' type='text/javascript' src='file:///System/Library/WidgetResources/.parsers/moviesParser.js' charset='utf-8'></script>
+	<script type='text/javascript' src='Movies.js'></script>
+	<style type="text/css">
+		@import "AppleBrowser.css";
+		@import "Movies.css";
+	</style>
+</head>
+<body onload="load();">
+
+	<div id="front">
+		
+		<div id="grid" class="collapsed">
+			<div id="topLeft" class="corner"></div>
+			<div id="topMid" class="edge"></div>
+			<div id="topRight" class="corner"></div>
+
+			<div id="midLeft" class="edge"></div>
+			<div id="midMid"></div>
+			<div id="midRight" class="edge"></div>
+
+			<div id="bottomLeft" class="corner"></div>
+			<div id="bottomMid" class="edge"></div>
+			<div id="bottomRight" class="corner"></div>
+		</div>
+		
+		<div id="posterWrap" style="display:none;">
+			<img id="poster2" class="poster" src="#" alt="" style="opacity:1;">
+			<img id="poster1" class="poster" src="#" alt="" style="opacity:0;">
+			<div id="compactShine"></div>
+		</div>
+		
+		<div id="errorMsgBox"></div>
+
+		<div id="expandedView" style="display:none;">
+			<div id="expandedTop" style="display:none;">
+				<div id="browserContainer" style="display:none;">
+					<div id="browser"></div> 
+				
+					<div id="topbar">
+						<div id="moviesTheatersSelector">
+							<button id="moviesButton" class="selected"></button>
+							<button id="theatersButton"></button>
+						</div>
+						<div id="topbarClickRegion"></div>
+						<img id="daisyWheel" src="Images/__movieSpinner.gif" alt="">
+						<img id="dateSelectImage" src="Images/popup_ref.png" alt="">
+						<img id="dateSelectArrows" src="Images/popuparrows.png" alt="">
+						<div id="dateSelectText"></div>
+						<select id="dateSelect" onchange="dateSelectChanged(event);"><option></option></select>
+					</div>	<!-- topbar -->
+				</div> <!-- browserContainer -->
+			</div> <!-- expandedTop -->
+			
+			<div id="expandedBottom"> 
+				<div id="bottomPane">
+
+					<div id="theaterInfoPane" style="display:none;">
+						<div id="currentTheaterLogo">
+							<div id="currentTicketTitle"></div>
+						</div>
+	
+						<div id="currentTheaterInfo">
+							<h3 id="currentTheaterName"></h3>
+							<div id="currentTheaterAddress">
+								<div id="currentTheaterStreet"></div>
+								<div>
+									<span id="currentTheaterCity"></span>,
+									<span id="currentTheaterState"></span>
+									<span id="currentTheaterZip"></span>
+								</div>
+							</div>
+							<div id="currentTheaterPhone"></div>
+							<ul id="currentTheaterFeatures"><li></li></ul>
+						</div> <!-- currentTheaterInfo -->
+						<div id="currentTheaterInfoScroll"></div>
+						
+					</div>
+	
+					<div id="movieInfoPane" style="display:none;">
+						<div id="currentPosterWrap">
+							<img id="currentPoster" src="#" alt="">
+							<div id="currentPosterTitle"></div>
+						</div>
+		
+						<button id="trailerButton" class="disabledActionButton" onclick="trailerButtonClicked(event);"></button>
+						<button id="ticketsButton" class="disabledActionButton" onclick="ticketsButtonClicked(event);"></button>
+						
+						<div id="currentMovieInfo">
+							<h3 id="currentTitle"></h3>
+							<span id="currentRating"></span>
+							<dl>
+								<dt id="releaseDateLabel"></dt><dd id="currentReleaseDate"></dd>
+								<dt id="runtimeLabel"></dt><dd id="currentRuntime"></dd>
+								<dt id="castLabel"></dt><dd id="currentCast"></dd>
+								<dt id="directorsLabel"></dt><dd id="currentDirectors"></dd>
+								<dt id="genresLabel"></dt><dd id="currentGenres"></dd>
+							</dl>
+							<div id="currentSynopsis"></div>
+						</div> <!-- currentMovieInfo -->
+						<div id="currentMovieInfoScroll"></div>
+					</div> <!-- movieInfoPane -->
+	
+					<div id="trailerPane" class="paused" style="display:none;">
+						<div id="trailerControls">
+							<div id="track"></div>
+							<div id="trailerSlider"><div id="trailerProgressIndicator" style="width:0;"></div></div>
+							<button id="backButton"></button>
+								<button id="playButton"></button>
+						</div>
+						<embed id="movie"
+							   pluginspage="http://www.apple.com/quicktime/download/"
+							   src="#"
+							   width="480"
+							   type="video/quicktime"
+							   bgcolor="black"
+							   autoplay="true"
+							   showlogo="false"
+							   controller="false"
+							   enablejavascript="true">
+						</embed>
+					</div> <!-- trailerPane -->
+					
+				</div> <!-- bottomPane -->
+				
+				<div id="infoButton" style="display:none;"></div>
+			</div> <!-- expandedBottom -->
+		</div> <!-- expandedView -->
+	</div>	<!-- front -->
+	
+	<div id="back">
+		<a href="javascript:logoClicked(event);"><img id="fandangoLogo" src="Images/fandango.png" alt="Fandango.com"></a>
+		<div id="locationLabel"></div>
+		<input type="text" id="locationTextField" oninput="locationTextFieldTyping(event);" onkeypress="locationTextFieldKeyPressed(event);">
+		<div id="validateLabel"></div>
+		<div id="doneButton"></div>
+	</div>	<!-- back -->
+</body>
+</html>

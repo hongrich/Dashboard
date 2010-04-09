@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.widget.stocks</string>
+	<key>CFBundleName</key>
+	<string>Stocks</string>
+	<key>CFBundleDisplayName</key>
+	<string>Stocks</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleVersion</key>
+	<string>5</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.6.3</string>
+	<key>CloseBoxInsetX</key>
+	<integer>8</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>5</integer>
+	<key>AllowNetworkAccess</key>
+	<true/>
+	<key>Height</key>
+	<integer>278</integer>
+	<key>MainHTML</key>
+	<string>Stocks.html</string>
+	<key>Width</key>
+	<integer>213</integer>
+	<key>Parser</key>
+	<string>stocksParser.js</string>
+	<key>SyncExclusions</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>http://www.apple.com/widgets/stocksParser.js</string>
+			<key>global</key>
+			<true/>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,100 @@
+<!--
+Copyright ＿ 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+-->
+<html>
+<head>
+<style type="text/css" title="AppleStyle">
+	@import "Stocks.css";
+</style>
+
+<script type='text/javascript' src='localizedStrings.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
+<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
+<script type='text/javascript' src='Stocks.js' charset='utf-8'></script>
+<script id='apple-replace-script' type='text/javascript' src='file:///System/Library/WidgetResources/.parsers/stocksParser.js' charset='utf-8'></script>
+</head>
+
+<body onload="setupWidget();">
+	
+	<div id='front'>
+		<div id='tableTop'></div>
+		<div id='tableContainer'>
+			<!-- force the images to load before start -->
+			<div class='tableRowLight'></div>
+			<div class='tableRowDark'></div>
+			<div class='tableBottomDark'></div> 
+		</div>
+		<div id='tableBottom' class='tableBottomLight'></div>
+		<div id='chart'>
+			<div class='relative'>
+			<table cellspacing='0' class='mytable'>
+				<tr align='center'>
+					<td onclick='dayclick(event, this, "1d");'>
+						<div class='left'></div><div id='1dtext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "1w");'>
+						<div class='left'></div><div id='1wtext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "1m");'>
+						<div class='left'></div><div id='1mtext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "3m");'>
+						<div class='left'></div><div id='3mtext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "6m");'>
+						<div class='left'></div><div id='6mtext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "1y");'>
+						<div class='left'></div><div id='1ytext' class='middle'></div><div class='right'></div>
+					</td>
+					<td onclick='dayclick(event, this, "2y");'>
+						<div class='left'></div><div id='2ytext' class='middle'></div><div class='right'></div>
+					</td>
+				</tr>
+			</table>
+			<div id='retrieving'></div>
+			<canvas id='chart-canvas' width='144' height='48'></canvas>
+			<div id='horizontal-axes'></div>
+			<div id='vertical-axes'></div>
+			</div>
+		</div>
+		<div id='footer'>
+			<div class='relative'>
+				<div id="ylogo" onclick="yLogoClick(event);"></div>
+				<div id='quoteUpdateDiv'></div>
+				<div id='messageDiv'></div>				
+				<div class='flip' id='flip'></div>
+			</div>
+		</div>
+		<img id='selection' src='Images/selection-first.png'/>
+		<table id="stocksHeader" cellspacing='0' cellpadding='0'><tbody id='tbody'></tbody></table>
+		
+	</div>
+	
+	<div id='back'>
+		<img src='Images/backside.png' />
+		<input id='symbolinput' onfocus='symbolFocus(event);' onblur='symbolBlur(event);' oninput='symbolTyping(event);' onkeypress='symbolKeyPress(event);'/>
+		<img id='addbutton' onmousedown='addButtonMouseDown(event);' src='Images/addbutton.png'/>
+		<div id='quoteslabel'></div>
+		<div id='validate'></div>
+		<div id='list'>
+			<div id='inner-list'></div>
+		</div>
+		<div id='checkdiv'>
+			<input type='checkbox' id='percentcheck' onchange='clickonchange(event);'/><span id='percenttext' onclick='showAsPercentChanged(event);'></span>
+		</div>
+		<img id='logo' src='Images/Logo_yahoofinance.png' onclick='financeLogoClick(event);'/>
+		<a id="tosLink" href="javascript:tosClick(event);"></a>
+		
+		<div id='remove'></div>
+		<div id='done'></div>
+	</div>
+</body>
+</html>

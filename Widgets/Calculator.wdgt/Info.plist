@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Calculator</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.widget.calculator</string>
+	<key>CFBundleName</key>
+	<string>Calculator</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2</string>
+	<key>CFBundleVersion</key>
+	<string>1.2</string>
+	<key>CloseBoxInsetX</key>
+	<integer>9</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>5</integer>
+	<key>Fonts</key>
+	<array>
+		<string>DB LCD Temp-Black.ttf</string>
+	</array>
+	<key>Height</key>
+	<integer>248</integer>
+	<key>MainHTML</key>
+	<string>Calculator.html</string>
+	<key>Width</key>
+	<integer>172</integer>
+</dict>
+</plist>

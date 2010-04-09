@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'Dashboard' target in the 'Dashboard' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+#ifdef DEBUG
+    #define NSLog(fmt,...) NSLog(fmt,##__VA_ARGS__)
+#else
+    #define NSLog(...)
+#endif

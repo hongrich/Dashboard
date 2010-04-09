@@ -1,0 +1,421 @@
+/*
+Copyright ＿ 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+*/
+
+body {
+	margin:0;
+}
+
+#back {
+	display:none;
+}
+
+#tableTop {
+	width:213px;
+	height:34px;
+	background:url(Images/stocks_table_top.png) no-repeat top left;
+}
+
+.tableRowLight {
+	width:213px;
+	height:25px;
+	background:url(Images/stocks_table_lt.png) no-repeat top left;
+}
+
+.tableRowDark {
+	width:213px;
+	height:25px;
+	background:url(Images/stocks_table_dk.png) no-repeat top left;
+}
+
+.tableBottomLight {
+	width:213px;
+	height:28px;
+	background:url(Images/stocks_table_bottom_lt.png) no-repeat top left;
+}
+
+.tableBottomDark {
+	width:213px;
+	height:28px;
+	background:url(Images/stocks_table_bottom_dk.png) no-repeat top left;
+}
+
+#chart {
+	width:213px;
+	height:80px;
+	background:url(Images/stocks_graph_bkgd.png) no-repeat top left;
+	overflow:hidden;
+}
+
+#footer {
+	width:213px;
+	height:35px;
+	background:url(Images/stocks_bottom.png) no-repeat top left;
+}
+
+#stocksHeader {
+	position: absolute;
+	width: 184px;
+	left: 15px;
+	top: 8px;
+	font: 13px "Helvetica Neue";
+  	font-weight: bold;
+  	text-shadow: #666666 0px -1px 1px;
+  	color: #ffffff;
+}
+
+#stocksHeader td {
+	vertical-align:center;
+}
+
+.stockRow {
+	cursor: pointer;
+	width: 164px;
+	height: 25px;
+}
+
+td.symbol {
+	width:62px;
+	height: 25px;
+	text-transform: uppercase; 
+}
+
+td.symbol div {
+	width: 62px;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space:nowrap;		
+}
+/*
+span.symbol:hover {
+	text-decoration: underline;
+}
+*/
+
+td.value {
+  	text-align: right;
+	width:60px;
+}
+
+.updown {
+	background: url(Images/up.png) no-repeat top left;
+	width:54px;
+	height:18px;
+	margin-left:6px;
+	text-align:right;
+	position:relative;
+}
+
+.inner-table {
+	position:absolute;
+	left: 9px;
+	width:41px;
+
+	font: 12px "Helvetica Neue";
+  	font-weight: bold;
+  	text-shadow: #666666 0px -1px 1px;
+  	color: #ffffff;
+}
+
+.inner-table td {
+	height:18px;
+	font-size:12px;
+}
+
+.change {
+	min-width: 41px;
+	text-align: right;
+}
+
+.hidden {
+	display:none;
+}
+
+.flip {
+	position:absolute;
+	right:14px; 
+	top:2px;
+	width:13px;
+	height:13px;
+}
+
+
+.background {
+	position:absolute;
+	top: 0;
+	left: 0;
+}
+
+#graph {
+	position:absolute; 
+	top:163px; 
+	left:12px;
+}
+
+#selection {
+	position:absolute; 
+	top: 6px;
+	left:10px;
+}
+
+.relative {
+	position:relative;
+}
+
+#ylogo {
+	width:22px; height:14px;
+	margin:0 0 0 14px;
+	background:transparent url(Images/yahoo.png) 0 0 no-repeat;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#ylogo:hover {
+	background-image:url(Images/yahoo_hover.png);
+}
+
+#ylogo:active {
+	background-image:url(Images/yahoo_down.png);
+}
+
+#quoteUpdateDiv, #messageDiv {
+	-webkit-transition-property: "opacity";
+    -webkit-transition-duration: 2s;
+	
+	position:absolute;
+	left:40px;
+	top:2px;
+	font:bold 9px "Helvetica Neue", Helvetica, sans-serif;
+  	color: rgb(166,179,202);
+  	text-shadow: rgba(0,0,0,0.5) 0px -1px 1px;
+}
+
+#messageDiv {
+	opacity:0;
+}
+
+#symbolinput {
+	position:absolute;
+	left:15px;
+	top:14px;
+	width:157px;
+	font-size:11px;
+}
+
+#quoteslabel {
+	position:absolute;
+	left:15px;
+	top:40px;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color:white;
+}
+
+#validate {
+	display: hidden;
+	position:absolute;
+	left: 100px;
+	top:40px;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color:white;
+}
+
+#addbutton {
+	position:absolute;
+	left:176px;
+	top:16px;
+	height: 19px;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#list {
+	position: absolute;
+	top:55px;
+	left:15px;
+	width:180px;
+	height:120px; 
+	border-bottom:1px solid rgb(102, 102, 102);
+	border-top: 1px solid rgb(0, 0, 0);
+	border-left: 1px solid rgb(77, 77, 77);
+	border-right:  1px solid rgb(77, 77, 77);
+	overflow:auto;
+}
+
+#logo {
+	position:absolute;
+	left:45px;
+	top:201px;
+	cursor:pointer;
+}
+
+#tosLink {
+	position:absolute;
+	left:66px; top:217px;
+	font:bold 10px "Helvetica Neue", Helvetica, sans-serif;
+	color:white;
+	text-decoration:none;
+}
+
+#inner-list {
+	width:100%;
+	min-height:120px;
+	background:url(Images/list-background.png) repeat-y top left;
+}
+
+.row {
+	height:17px;
+}
+
+.col1 {
+	position:absolute;
+	left:4px;
+	width:46px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;		
+
+	font: 11px "Lucida Grande";
+}
+
+.col2 {
+	position:absolute;
+	left:55px;
+	width:110px;
+	overflow:hidden;
+	white-space:nowrap;
+	font: 11px "Lucida Grande";
+	color:rgb(118,121,127);
+}
+
+.select {
+	background-color:rgb(56,116,209);
+	color:white;
+}
+
+div.select span {
+	color:white;
+}
+
+#checkdiv {
+	position:absolute;
+	top:179px;
+	left:14px;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color:white;
+		
+}
+
+#remove {
+	position:absolute;
+	top: 235px;
+	left:15px;
+	height:23px;
+}
+
+#done {
+	position:absolute;
+	top: 235px;
+	right:15px;
+}
+
+.mytable {
+	margin-left:auto;
+	margin-right:auto;
+	font: 10px "Helvetica Neue";
+  	font-weight: bold;
+	color:white;
+}
+
+
+.mytable td {
+	line-height:10px;
+}
+
+td .left {
+	width:3px;
+	height:12px;
+	float:left;
+}
+
+td .middle {
+	float:left;
+	padding-bottom:1px;
+	height:11px;
+}
+
+td .right {
+	height:12px;
+	width:3px;
+	float:left;
+}
+
+
+td.selected .left {
+	background: url(Images/chartselect/stocks_left_select.png) no-repeat top left;
+	width:6px;
+}
+
+td.selected .middle {
+	color:rgb(51, 76, 118);
+	background: url(Images/chartselect/stocks_center_select_1px.png) repeat-x top left;
+
+}
+
+td.selected .right {
+	display:inline-block;
+	background: url(Images/chartselect/stocks_right_select.png) no-repeat top left;
+	width:6px;
+}
+
+#chart-canvas {
+	position:absolute;
+	left:19px;
+	top:16px;
+}
+
+#vertical-axes {
+	position: absolute;
+	left:166px;
+	top: 14px;
+	width: 34px;
+	font: 10px "Helvetica Neue";
+  	font-weight: bold;
+	color:white;
+	text-align:center;
+	display:none;
+}
+
+#retrieving {
+	position:absolute;
+	top:27px;
+	width:213px;
+	font: 12px "Helvetica Neue";
+  	font-weight: bold;
+  	color: white;
+	text-align:center;
+  	display:none;
+}
+
+#horizontal-axes {
+	position: absolute;
+	left:12px;
+	top: 66px;
+	font: 8.5px "Helvetica Neue";
+  	font-weight: bold;
+	color:white;
+	display:none;
+}
+
+
+.xaxes {
+	position:absolute;
+	top:0;
+	text-align: center;
+}

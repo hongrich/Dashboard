@@ -1,0 +1,53 @@
+<!--
+Copyright © 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+<style type="text/css" title="AppleStyle">
+	@import "Calculator.css";
+</style>
+
+<script type="text/javascript" src="Calculator.js"></script>
+<script type='text/javascript' src='localizedStrings.js'></script>
+
+</head>
+	<body oncut='docut(event);' oncopy='docopy(event);' onpaste='dopaste(event);'>
+		<img src='Images/Calculator.png' alt="Calculator"/>
+		<img id="lcd-backlight" src='Images/lcd-backlight.png' alt="lcd backlight" />
+		<img id="0" class='button' src='Images/0.png' alt="0" style="left:16px; top:191px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="decimal" class='button' src='Images/decimal.png'  alt="decimal" style="left:54px; top:191px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="c" class='button' src='Images/c.png' alt="clear" style="left:92px; top:191px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="1" class='button' src='Images/1.png' alt="1" style="left:16px; top:153px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="2" class='button' src='Images/2.png' alt="2" style="left:54px; top:153px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="3" class='button' src='Images/3.png' alt="3" style="left:92px; top:153px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="4" class='button' src='Images/4.png' alt="4" style="left:16px; top:115px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="5" class='button' src='Images/5.png' alt="5" style="left:54px; top:115px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="6" class='button' src='Images/6.png' alt="6" style="left:92px; top:115px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="7" class='button' src='Images/7.png' alt="7" style="left:16px; top:77px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="8" class='button' src='Images/8.png' alt="8" style="left:54px; top:77px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="9" class='button' src='Images/9.png' alt="9" style="left:92px; top:77px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		
+		<img id="m+" class='button' src='Images/m+.png' alt="memory plus" style="left:16px; top:52px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="m-" class='button' src='Images/m-.png' alt="memory minus" style="left:44px; top:52px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="mc" class='button' src='Images/mc.png' alt="clear memory" style="left:72px; top:52px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="mr" class='button' src='Images/mr.png' alt="memory recall" style="left:100px; top:52px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+
+		<img id="div" class='button' src='Images/div.png' alt="divided by" style="left:130px; top:52px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="mult" class='button' src='Images/mult.png' alt="times" style="left:131px; top:79px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="sub"  class='button' src='Images/sub.png' alt="minus" style="left:131px; top:109px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="add"  class='button' src='Images/add.png' alt="plus" style="left:131px; top:139px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<img id="equal" class='button' src='Images/equal.png' alt="equals" style="left:131px; top:170px;" onmousedown='mouseDown(event, this.id);' onmouseup='mouseUp(event, this.id);' onmouseout='mouseOut(event, this.id);'/>
+		<div id='outerCalcDisplay'>
+			<div id="calcDisplay" class = "nobacklightLCD" onclick="modeSwitch(event);">0</div>
+		</div>
+	</body>
+</html>

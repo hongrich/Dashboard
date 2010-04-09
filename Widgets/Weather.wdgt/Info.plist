@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowNetworkAccess</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Weather</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.widget.weather</string>
+	<key>CFBundleName</key>
+	<string>Weather</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.5</string>
+	<key>CFBundleVersion</key>
+	<string>2.0.5</string>
+	<key>CloseBoxInsetX</key>
+	<integer>13</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>10</integer>
+	<key>MainHTML</key>
+	<string>Weather.html</string>
+	<key>Parser</key>
+	<string>weatherParser.js</string>
+	<key>SyncExclusions</key>
+	<array>
+		<dict>
+			<key>global</key>
+			<true/>
+			<key>key</key>
+			<string>http://www.apple.com/widgets/weatherParser.js</string>
+		</dict>
+		<dict>
+			<key>global</key>
+			<false/>
+			<key>key</key>
+			<string>reloadedWidget</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,82 @@
+<!--
+Copyright (C) 2006, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<style type="text/css" title="AppleStyle">
+		@import "ESPN.css";
+	</style>
+	<script id='apple-replace-script' type='text/javascript' src='file:///System/Library/WidgetResources/.parsers/ESPNParser.js' charset='utf-8'></script>
+	<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
+	<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
+	<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
+	<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleScrollbar.js' charset='utf-8'></script>
+	<script type='text/javascript' src='file:///System/Library/WidgetResources/AppleClasses/AppleScrollArea.js' charset='utf-8'></script>
+	<script type='text/javascript' src='localizedStrings.js' charset='utf-8'></script>
+	<script type='text/javascript' src='ESPN.js' charset='utf-8'></script>
+</head>
+
+<body onload='onWidgetHTMLBodyLoaded();'>
+
+	<div id='iFrontSide'>
+		
+		<img id='iBackgroundPicture' onload='onIMGBackgroundPictureLoaded();'></img>
+		<img id='iBackgroundOverlayIfScores' src='Images/backgrounds/overlay_scores.png'></img>
+		<div id='iLeagueTitle' onclick='onRequestClickedOnLeagueTitle(event);'></div>
+		
+		<img id='iNewsButton' class='sButton' src='Images/button_on.png'></img>
+		<div id='iNewsButtonText' class='sButton-TextOn' onmousedown='onNewsButtonMouseDown(event,this);'></div>
+		<img id='iScoresButton' class='sButton' src='Images/button_off.png'></img>
+		<div id='iScoresButtonText' class='sButton-TextOff' onmousedown='onScoresButtonMouseDown(event,this);'></div>
+		
+		<div id='iScoresHeaderContainer'></div>
+		
+		<div id='iMiddleOfVaryingHeightContainer'>
+			<div id='iScrollableArea'>
+				<div id='iNewsContainer'>
+					<div id='iNewsMessage'></div>
+					<div id='iNewsData'></div>
+				</div>
+				<div id='iScoresContainer'>
+					<div id='iScoresMessage'></div>
+					<div id='iScoresData'></div>
+				</div>
+			</div>
+		</div><!--iMiddleOfVaryingHeightContainer-->
+	
+		<div id='iScrollBar'></div>
+
+		<div id='iCrawlContainer' onclick='onRequestClickedOnCrawlContainer(event);'>
+			<div id='iCrawlData'></div>
+		</div>
+		
+		<div id='iInfoButton'></div>
+		
+	</div><!--iFrontSide-->
+	
+	<div id='iBackSide'>
+		<img id='iBackBackground' src='Images/backside.png'></img>
+		<img id='iEspnLogo' src='Images/espn_logo.png' onclick='onRequestClickedOnEspnLogo(event);'></img>
+		<div id='iSportPopupMenuTitle'></div>
+		<select id='iSportPopupMenu'></select>
+		<div id='iDoneButton'></div>
+	</div><!--iBackSide-->
+	
+<script>
+	onWidgetMain();
+</script>
+
+</body>
+
+</html>

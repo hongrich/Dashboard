@@ -1,0 +1,23 @@
+var localizedStrings = new Array;
+
+localizedStrings['SUN'] = 'SUN';
+localizedStrings['MON'] = 'MON';
+localizedStrings['TUE'] = 'TUE';
+localizedStrings['WED'] = 'WED';
+localizedStrings['THU'] = 'THU';
+localizedStrings['FRI'] = 'FRI';
+localizedStrings['SAT'] = 'SAT';
+localizedStrings['Include lows in 6-day forecast'] = 'Include lows in 6-day forecast';
+localizedStrings['ºF'] = 'ºF';
+localizedStrings['ºC'] = 'ºC';
+localizedStrings['Degrees:'] = 'Degrees:';
+localizedStrings['City, State or ZIP Code:'] = 'City, State or ZIP Code:';
+localizedStrings['Validating'] = 'Validating';
+localizedStrings['Done'] = 'Done';
+localizedStrings['No cities found'] = 'No cities found';
+localizedStrings['H: '] = 'H: ';
+localizedStrings['L: '] = 'L: ';
+localizedStrings['UseCelcius'] = '0';
+localizedStrings['Try a more specific search'] = 'Try a more specific search';
+localizedStrings['You need to select this city again'] = 'You need to select this city again';
+localizedStrings['Weather information for this city is no longer available.'] = 'Weather information for this city is no longer available.';

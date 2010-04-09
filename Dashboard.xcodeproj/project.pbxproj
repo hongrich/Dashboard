@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* DashboardAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DashboardAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* DashboardViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DashboardViewController.m */; };
+		9B3D8097111BB64A00CA1B74 /* DashboardClose.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3D8096111BB64A00CA1B74 /* DashboardClose.png */; };
+		9B3D80BB111BBB0000CA1B74 /* DashboardWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D80BA111BBB0000CA1B74 /* DashboardWidget.m */; };
+		9B5E3F98114B246D00279B40 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F8E114B246D00279B40 /* ioapi.c */; };
+		9B5E3F99114B246D00279B40 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F90114B246D00279B40 /* mztools.c */; };
+		9B5E3F9A114B246D00279B40 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F92114B246D00279B40 /* unzip.c */; };
+		9B5E3F9B114B246D00279B40 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F94114B246D00279B40 /* zip.c */; };
+		9B5E3F9C114B246D00279B40 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F97114B246D00279B40 /* ZipArchive.mm */; };
+		9B5E3FA7114B2E3C00279B40 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5E3FA6114B2E3C00279B40 /* libz.dylib */; };
+		9B5FB7B6116AB6A000BDC59A /* WidgetResources in Resources */ = {isa = PBXBuildFile; fileRef = 9B5FB777116AB6A000BDC59A /* WidgetResources */; };
+		9B6871461156CCAB0071117A /* DashboardDownalodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */; };
+		9B6871471156CCAB0071117A /* DashboardDownalodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */; };
+		9B6878621158267B0071117A /* DashboardNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6878611158267B0071117A /* DashboardNew.png */; };
+		9B6878901158304B0071117A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B68788F1158304B0071117A /* Icon.png */; };
+		9B6878B3115850450071117A /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6878B2115850450071117A /* Default-Landscape.png */; };
+		9B6878B5115850F60071117A /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6878B4115850F60071117A /* Default-Portrait.png */; };
+		9B6B7DC6111B39460053A3BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6B7DC5111B39460053A3BC /* QuartzCore.framework */; };
+		9BA4EB54115C61B000EE3998 /* DashboardDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA4EB53115C61B000EE3998 /* DashboardDownloadItem.m */; };
+		9BA4EB5A115C62CA00EE3998 /* DashboardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA4EB59115C62CA00EE3998 /* DashboardIcon.png */; };
+		9BBAE9F1111A49F800CA2587 /* Widgets in Resources */ = {isa = PBXBuildFile; fileRef = 9BBAE888111A49F800CA2587 /* Widgets */; };
+		9BBAEC2B111A6EC300CA2587 /* DashboardWidgetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBAEC28111A6EC300CA2587 /* DashboardWidgetItem.m */; };
+		9BBAEC2C111A6EC300CA2587 /* DashboardWidgetsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBAEC2A111A6EC300CA2587 /* DashboardWidgetsView.m */; };
+		9BBAEC35111A6EE500CA2587 /* DashboardAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBAEC33111A6EE500CA2587 /* DashboardAdd.png */; };
+		9BBAEC36111A6EE500CA2587 /* DashboardAppsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBAEC34111A6EE500CA2587 /* DashboardAppsBackground.png */; };
+		9BEA00F31128EF8E0033D1B7 /* UIImage-NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA00F21128EF8E0033D1B7 /* UIImage-NSCoding.m */; };
+		9BEA8E39115E65F700E1014C /* firstRun in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA8E38115E65F700E1014C /* firstRun */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* DashboardAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* DashboardAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardAppDelegate.m; sourceTree = "<group>"; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Dashboard_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dashboard_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9B3D8096111BB64A00CA1B74 /* DashboardClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardClose.png; sourceTree = "<group>"; };
+		9B3D80B9111BBB0000CA1B74 /* DashboardWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardWidget.h; sourceTree = "<group>"; };
+		9B3D80BA111BBB0000CA1B74 /* DashboardWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardWidget.m; sourceTree = "<group>"; };
+		9B5E3F8D114B246D00279B40 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		9B5E3F8E114B246D00279B40 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		9B5E3F8F114B246D00279B40 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		9B5E3F90114B246D00279B40 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		9B5E3F91114B246D00279B40 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		9B5E3F92114B246D00279B40 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		9B5E3F93114B246D00279B40 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		9B5E3F94114B246D00279B40 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		9B5E3F95114B246D00279B40 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		9B5E3F96114B246D00279B40 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		9B5E3F97114B246D00279B40 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		9B5E3FA6114B2E3C00279B40 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9B5FB777116AB6A000BDC59A /* WidgetResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WidgetResources; sourceTree = "<group>"; };
+		9B6871431156CCAB0071117A /* DashboardDownalodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardDownalodViewController.h; sourceTree = "<group>"; };
+		9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardDownalodViewController.m; sourceTree = "<group>"; };
+		9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardDownalodViewController.xib; sourceTree = "<group>"; };
+		9B6878611158267B0071117A /* DashboardNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardNew.png; sourceTree = "<group>"; };
+		9B68788F1158304B0071117A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9B6878B2115850450071117A /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		9B6878B4115850F60071117A /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		9B6B7DC5111B39460053A3BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9BA4EB52115C61B000EE3998 /* DashboardDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardDownloadItem.h; sourceTree = "<group>"; };
+		9BA4EB53115C61B000EE3998 /* DashboardDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardDownloadItem.m; sourceTree = "<group>"; };
+		9BA4EB59115C62CA00EE3998 /* DashboardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardIcon.png; sourceTree = "<group>"; };
+		9BBAE888111A49F800CA2587 /* Widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Widgets; sourceTree = "<group>"; };
+		9BBAEB96111A54A500CA2587 /* Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BBAEC27111A6EC300CA2587 /* DashboardWidgetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardWidgetItem.h; sourceTree = "<group>"; };
+		9BBAEC28111A6EC300CA2587 /* DashboardWidgetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardWidgetItem.m; sourceTree = "<group>"; };
+		9BBAEC29111A6EC300CA2587 /* DashboardWidgetsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardWidgetsView.h; sourceTree = "<group>"; };
+		9BBAEC2A111A6EC300CA2587 /* DashboardWidgetsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardWidgetsView.m; sourceTree = "<group>"; };
+		9BBAEC33111A6EE500CA2587 /* DashboardAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardAdd.png; sourceTree = "<group>"; };
+		9BBAEC34111A6EE500CA2587 /* DashboardAppsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardAppsBackground.png; sourceTree = "<group>"; };
+		9BEA00F11128EF8E0033D1B7 /* UIImage-NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-NSCoding.h"; sourceTree = "<group>"; };
+		9BEA00F21128EF8E0033D1B7 /* UIImage-NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSCoding.m"; sourceTree = "<group>"; };
+		9BEA8E38115E65F700E1014C /* firstRun */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = firstRun; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				9B6B7DC6111B39460053A3BC /* QuartzCore.framework in Frameworks */,
+				9B5E3FA7114B2E3C00279B40 /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9BA4EB52115C61B000EE3998 /* DashboardDownloadItem.h */,
+				9BA4EB53115C61B000EE3998 /* DashboardDownloadItem.m */,
+				9B6871431156CCAB0071117A /* DashboardDownalodViewController.h */,
+				9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */,
+				9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */,
+				1D3623240D0F684500981E51 /* DashboardAppDelegate.h */,
+				1D3623250D0F684500981E51 /* DashboardAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* DashboardViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* DashboardViewController.m */,
+				9B3D80B9111BBB0000CA1B74 /* DashboardWidget.h */,
+				9B3D80BA111BBB0000CA1B74 /* DashboardWidget.m */,
+				9BBAEC27111A6EC300CA2587 /* DashboardWidgetItem.h */,
+				9BBAEC28111A6EC300CA2587 /* DashboardWidgetItem.m */,
+				9BBAEC29111A6EC300CA2587 /* DashboardWidgetsView.h */,
+				9BBAEC2A111A6EC300CA2587 /* DashboardWidgetsView.m */,
+				9BEA00F11128EF8E0033D1B7 /* UIImage-NSCoding.h */,
+				9BEA00F21128EF8E0033D1B7 /* UIImage-NSCoding.m */,
+				9B5E3F8B114B246D00279B40 /* ZipArchive */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BBAEB96111A54A500CA2587 /* Dashboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources-iPad */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Dashboard_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				9BEA8E38115E65F700E1014C /* firstRun */,
+				9BA4EB59115C62CA00EE3998 /* DashboardIcon.png */,
+				9B6878B4115850F60071117A /* Default-Portrait.png */,
+				9B6878B2115850450071117A /* Default-Landscape.png */,
+				9B68788F1158304B0071117A /* Icon.png */,
+				9B6878611158267B0071117A /* DashboardNew.png */,
+				9B3D8096111BB64A00CA1B74 /* DashboardClose.png */,
+				9BBAEC33111A6EE500CA2587 /* DashboardAdd.png */,
+				9BBAEC34111A6EE500CA2587 /* DashboardAppsBackground.png */,
+				9BBAE888111A49F800CA2587 /* Widgets */,
+				2899E5210DE3E06400AC0155 /* DashboardViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				9B5FB777116AB6A000BDC59A /* WidgetResources */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B6B7DC5111B39460053A3BC /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				9B5E3FA6114B2E3C00279B40 /* libz.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B5E3F8B114B246D00279B40 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				9B5E3F8C114B246D00279B40 /* minizip */,
+				9B5E3F96114B246D00279B40 /* ZipArchive.h */,
+				9B5E3F97114B246D00279B40 /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		9B5E3F8C114B246D00279B40 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				9B5E3F8D114B246D00279B40 /* crypt.h */,
+				9B5E3F8E114B246D00279B40 /* ioapi.c */,
+				9B5E3F8F114B246D00279B40 /* ioapi.h */,
+				9B5E3F90114B246D00279B40 /* mztools.c */,
+				9B5E3F91114B246D00279B40 /* mztools.h */,
+				9B5E3F92114B246D00279B40 /* unzip.c */,
+				9B5E3F93114B246D00279B40 /* unzip.h */,
+				9B5E3F94114B246D00279B40 /* zip.c */,
+				9B5E3F95114B246D00279B40 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Dashboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Dashboard" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dashboard;
+			productName = Dashboard;
+			productReference = 9BBAEB96111A54A500CA2587 /* Dashboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Dashboard" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Dashboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* DashboardViewController.xib in Resources */,
+				9BBAE9F1111A49F800CA2587 /* Widgets in Resources */,
+				9BBAEC35111A6EE500CA2587 /* DashboardAdd.png in Resources */,
+				9BBAEC36111A6EE500CA2587 /* DashboardAppsBackground.png in Resources */,
+				9B3D8097111BB64A00CA1B74 /* DashboardClose.png in Resources */,
+				9B6871471156CCAB0071117A /* DashboardDownalodViewController.xib in Resources */,
+				9B6878621158267B0071117A /* DashboardNew.png in Resources */,
+				9B6878901158304B0071117A /* Icon.png in Resources */,
+				9B6878B3115850450071117A /* Default-Landscape.png in Resources */,
+				9B6878B5115850F60071117A /* Default-Portrait.png in Resources */,
+				9BA4EB5A115C62CA00EE3998 /* DashboardIcon.png in Resources */,
+				9BEA8E39115E65F700E1014C /* firstRun in Resources */,
+				9B5FB7B6116AB6A000BDC59A /* WidgetResources in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* DashboardAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* DashboardViewController.m in Sources */,
+				9BBAEC2B111A6EC300CA2587 /* DashboardWidgetItem.m in Sources */,
+				9BBAEC2C111A6EC300CA2587 /* DashboardWidgetsView.m in Sources */,
+				9B3D80BB111BBB0000CA1B74 /* DashboardWidget.m in Sources */,
+				9BEA00F31128EF8E0033D1B7 /* UIImage-NSCoding.m in Sources */,
+				9B5E3F98114B246D00279B40 /* ioapi.c in Sources */,
+				9B5E3F99114B246D00279B40 /* mztools.c in Sources */,
+				9B5E3F9A114B246D00279B40 /* unzip.c in Sources */,
+				9B5E3F9B114B246D00279B40 /* zip.c in Sources */,
+				9B5E3F9C114B246D00279B40 /* ZipArchive.mm in Sources */,
+				9B6871461156CCAB0071117A /* DashboardDownalodViewController.m in Sources */,
+				9BA4EB54115C61B000EE3998 /* DashboardDownloadItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Dashboard_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				OTHER_CFLAGS = "-DDEBUG";
+				PRODUCT_NAME = Dashboard;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rich Hong";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rich Hong";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos3.2]" = "iPhone Distribution: Rich Hong";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Dashboard_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Dashboard;
+				PROVISIONING_PROFILE = "052EBB10-4136-4A4C-9501-2679B1FB9150";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "052EBB10-4136-4A4C-9501-2679B1FB9150";
+				"PROVISIONING_PROFILE[sdk=iphoneos3.2]" = "052EBB10-4136-4A4C-9501-2679B1FB9150";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+		9BD1DE8C1167957A00A7BBD7 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rich Hong";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7BF5BA98-BEFD-4EF7-A08E-C0256D7264D7";
+				SDKROOT = iphoneos3.2;
+				VALID_ARCHS = armv7;
+			};
+			name = "Ad-Hoc";
+		};
+		9BD1DE8D1167957A00A7BBD7 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos3.2]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Dashboard_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Dashboard;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos3.2]" = "";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "";
+			};
+			name = "Ad-Hoc";
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Dashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				9BD1DE8D1167957A00A7BBD7 /* Ad-Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Dashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				9BD1DE8C1167957A00A7BBD7 /* Ad-Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

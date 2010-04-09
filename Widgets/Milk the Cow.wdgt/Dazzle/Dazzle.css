@@ -1,0 +1,257 @@
+/*
+
+File: Dazzle.css
+Version: 1.5
+
+Description:
+	Styles for Dazzle alert box.
+	All styles have been commented.
+		
+For more information, see the Dazzle homepage: "http://sculptedcode.com/dazzle/".
+
+
+Copyright (c) 2009 Steve Harrison.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+/* Formatting for the alert box container */
+
+#dazzle-alertBox {
+	
+	/*
+		To make the Dazzle alert box fit in with your widget,
+		you will most likely want to change:
+			- The z-index (to make sure that the alert box is on top of everything else)
+		
+		I recommend you override these styles in your own style sheet,
+		so that you can update the Dazzle framework without losing any of your modifications.
+	*/
+	
+	display: none;
+	opacity: 0;
+
+	z-index: 200;
+
+	width: 225px;
+
+	/* Without Release Notes Link */
+	height: 120px;
+
+	/* With Release Notes Link */
+/*	height: 145px;	*/
+	
+	position: absolute;
+	
+	/* Center the box on the y-axis*/
+	top: 0;
+	bottom: 0;
+
+	/* Center the box on the x-axis */
+	left: 0;
+	right: 0;
+	margin: auto;
+	
+	/* Text */
+	color: #fff;
+	font: bold 12px "Helvetica Neue";
+	text-shadow: #000 0 0 0;	
+}
+
+/* Formatting for the message text in the alert box */
+#dazzle-alertBox-alertText {
+	text-align: justify;
+
+	margin: 0;
+
+	position: absolute;
+	top: 18px;
+	left: 25px;
+	right: 25px;
+}
+
+/* Formatting for the "Open Release Notes in Browser" text */
+
+#dazzle-alertBox-releaseNotesText {
+	
+	display: none;
+	
+	color: #bfbfbf;
+	font-size: 11px;
+	text-align: center;	
+	
+	position: absolute;
+	top: 58px;
+	left: 34px;
+	
+	/* We have to specify this, since we don't have a "href" attribute on our <a> element */
+	cursor: pointer;
+}
+
+/* Normal State for the link */
+#dazzle-alertBox-releaseNotesText a {
+	/* We have to specify this, since we don't have a "href" attribute on our <a> element */
+	text-decoration: underline;
+
+	color: #bfbfbf;
+	font-size: 10px;
+}
+
+/* Hover State (when the cursor hovers over the link) */
+#dazzle-alertBox-releaseNotesText a:hover {
+	color: #f1f1f1;
+	font-size: 10px;
+}
+
+/* Active State (when the cursor clicks on the link) */
+#dazzle-alertBox-releaseNotesText a:active {
+	color: #9bb4e3;
+	font-size: 10px;
+}
+
+/* Formatting for the buttons at the bottom of the alert box */
+
+/* Button Container - Increasing the width makes the buttons further apart */
+#dazzle-alertBox-buttons {
+	width: 140px;
+	height: 24px;
+	
+	position: absolute;
+	bottom: 25px;
+
+	right: 25px;
+
+	text-shadow: #000 0px 0px 0px;	/* Makes text crisper */
+}
+
+/* "Download" button is aligned to the rightmost side of the button container */
+#dazzle-alertBox-downloadButton {
+	position: absolute;
+	right: 0;
+}
+
+/* "Later" button is aligned to the leftmost side of the button container */
+#dazzle-alertBox-laterButton {
+	position: absolute;
+	left: 0;
+}
+
+/* Formatting for the alert box background. Only change these rules if you have a good reason to do so... */
+
+/* @group Overlay Box Background */
+
+#dazzle-alertBox-background div {
+	position: absolute;
+}
+
+#dazzle-alertBox-topLeft {
+	width: 24px;
+	height: 23px;
+
+	left: 0;
+	top: 0;
+
+	background-image: url(Images/Top-Left.png);
+}
+
+#dazzle-alertBox-topCentre {
+	height: 23px;
+	
+	top: 0;
+	left: 24px;	/* Width of topLeft */
+	right: 24px;	/* Width of topRight */
+
+	background: url(Images/Top-Centre.png) repeat-x;
+}
+
+#dazzle-alertBox-topRight {
+	width: 24px;
+	height: 23px;
+
+	top: 0;
+	right: 0;
+
+	background-image: url(Images/Top-Right.png);
+}
+
+#dazzle-alertBox-middleLeft {
+	width: 21px;
+
+	left: 0;
+	
+	top: 23px;	/* Height of topLeft */
+	bottom: 30px;	/* Height of bottomLeft */
+
+	background-image: url(Images/Middle-Left.png);
+}
+
+#dazzle-alertBox-middleCentre {	
+	top: 23px;	/* Height of topLeft */
+	bottom: 30px;	/* Height of bottomLeft */
+
+	left: 21px;	/* Width of middleLeft */
+	right: 24px;	/* Width of middleRight */
+
+	background-image: url(Images/Middle-Centre.png);
+}
+
+#dazzle-alertBox-middleRight {
+	width: 24px;
+	
+	right: 0;
+
+	top: 23px;	/* Height of topRight */
+	bottom: 30px;	/* Height of bottomRight */
+
+	background-image: url(Images/Middle-Right.png);
+}
+
+#dazzle-alertBox-bottomLeft {
+	width: 24px;
+	height: 30px;
+
+	bottom: 0;
+	left: 0;
+
+	background-image: url(Images/Bottom-Left.png);
+}
+
+#dazzle-alertBox-bottomCentre {
+	height: 30px;
+
+	bottom: 0;
+	
+	left: 24px;	/* Width of bottomLeft */
+	right: 24px;	/* Width of bottomRight */
+
+	background-image: url(Images/Bottom-Centre.png);
+}
+
+#dazzle-alertBox-bottomRight {
+	width: 24px;
+	height: 30px;
+
+	bottom: 0;
+	right: 0;
+
+	background-image: url(Images/Bottom-Right.png);
+}
+
+/* @end group "Overlay Box Background" */

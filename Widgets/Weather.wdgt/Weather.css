@@ -1,0 +1,286 @@
+/*
+Copyright ＿ 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+*/
+
+body {
+	margin:0;
+}
+
+#back {
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+	height:172px;
+}
+
+#front-panel {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.icon {
+	position:absolute;
+}
+
+#icon-holder {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.background {
+	width: 284px;
+}
+
+#top {
+	background: url(Images/weather_day_top.png) no-repeat top left;
+	height: 30px;
+}
+
+#middle {
+	height: 15px;
+	//height: 106px;
+	overflow:hidden;
+}
+
+#bottom {
+	background: url(Images/weather_day_bottom.png) no-repeat top left;
+	height: 26px;
+}
+
+.text {
+	font-family: "Helvetica Neue";
+  	font-weight: bold;
+  	color: rgb(255,255,255);
+}
+
+.info {
+	position:absolute;
+	text-align: center;
+	width:90px;
+	left: 19px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.smallinfo {
+	font-size: 10px;
+	color: rgba(255, 255, 255, .7);
+	font-size: 10px;
+}
+
+#high {
+	top: 10px;
+}
+
+#lo {
+	top: 37px;
+}
+
+#location, #clickArea {
+	top: 21px;
+	font-size: 12.5px;
+	letter-spacing: -1px;
+	text-transform:capitalize;
+	cursor:pointer;
+}
+
+#clickArea {
+	opacity: 0;
+	z-index:2;
+}
+
+#temperature {
+	position:absolute;
+	top: 0px;
+	right:27px;
+	width: 99px;
+	text-align: right;
+	font-size:49px;
+	font-family: "HelveticaNeue-Light";
+	color: rgb(255, 255, 255);
+}
+
+#degree {
+	position:absolute;
+	top: 12px;
+	left: 256px;
+}
+
+#dot {
+	position:absolute;
+	top: 13px;
+	left: 258px;
+	display: none;
+}
+
+#middle-contents {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 284px;
+	height: 100%;
+}
+
+#dayband {
+	position: absolute;
+	top: 31px;
+	left: 14px;
+}
+
+#grid {
+	position: absolute;
+	top: 30px;
+	left: 13px;
+}
+
+.day {
+	position: absolute;
+	text-align:center;
+	width:42px;
+	height:12px;
+	top:34px;
+	font-size:12px;
+}
+
+.col0 {
+	left:15px;
+}
+
+.col1 {
+	left:58px;
+}
+
+.col2 {
+	left:100px;
+}
+
+.col3 {
+	left:141px;
+}
+
+.col4 {
+	left:182px;
+}
+
+.col5 {
+	left: 227px;
+}
+
+.smallicon {
+	position:absolute;
+	top: 53px;
+}
+
+.hi {
+	position:absolute;
+	top:84px;
+	font-size:18px;
+	text-align:center;
+	width:42px;
+}
+
+.low {
+	position:absolute;
+	top: 107px;
+	font-size:14px;
+	text-align:center;
+	width:42px;
+}
+
+.low-day-color {
+	color: rgb(118, 150, 193);
+}
+
+.low-night-color {
+	color: rgb(88, 82, 90);
+}
+
+.flip {
+	position:absolute;
+	top: -8px;
+	left: 255px;
+	width:13px;
+	height:13px;
+}
+
+#infobutton {
+	position:absolute;
+	top: -8px;
+	left: 255px;
+	z-index:8000;
+}
+
+#done {
+	position:absolute;
+	right:25px;
+	top:130px;
+}
+
+#ziplabel {
+	left: 23px;
+	top: 12px;
+}
+
+#zip {
+	position: absolute;
+	font: 12px "LucidaGrande";
+
+	top: 24px;
+	left: 22px;
+}
+
+.backlabel {
+	position: absolute;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color:white;
+}
+
+#checkdiv {
+	top: 133px;
+	left: 23px;
+}
+
+#unitlabel {
+	top: 12px;
+	left: 193px;
+}
+
+#tempunits {
+	position: absolute;
+	font: 12px "LucidaGrande";
+	top: 25px;
+	left:192px;
+	width: 48px;
+}
+
+#validate {
+	display: none;
+	top:49px;
+	left: 25px;
+}
+
+#yahooLogo {
+	position: absolute;
+	left:120px;
+	top:67px;
+	cursor:pointer;
+}
+
+#weatherDotComLogo {
+	position: absolute;
+	left:60px;
+	top:67px;
+	cursor:pointer;
+}
+

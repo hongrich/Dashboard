@@ -1,0 +1,317 @@
+/*
+Copyright � 2005, Apple Computer, Inc.  All rights reserved.
+NOTE:  Use of this source code is subject to the terms of the Software
+License Agreement for Mac OS X, which accompanies the code.  Your use
+of this source code signifies your agreement to such license terms and
+conditions.  Except as expressly granted in the Software License Agreement
+for Mac OS X, no other copyright, patent, or other intellectual property
+license or right is granted, either expressly or by implication, by Apple.
+*/
+
+html {
+	height:100%
+}
+
+body {
+	margin:0;
+	height:100%
+}
+
+#front {
+	position:absolute;
+	top:0; left:0;
+	height:187px;
+	width:276px;
+	background:url(Images/Base.png) left bottom no-repeat;
+}
+
+#front-panel {
+	position:absolute;
+	top:1px; bottom:0; left:0; right:0;
+}
+
+#frontImg {
+	width: 275px;
+	height: 146px; 
+}
+
+#degree
+{
+	position:absolute;
+	top: 58px;
+	left: 244px;
+	width: 11px; 
+	height: 12px; 
+}
+
+#dot {
+	position:absolute;
+	top: 58px;
+	left: 244px;
+//	display: none;
+}
+
+#snow {
+	position:absolute;
+	bottom: 108px; 
+	left: 7px;
+	width: 259px;
+	height: 76px;
+}
+
+
+#info {
+	position: absolute; 
+	right: 13px; 
+	bottom: 16px;
+	width: 13px;
+	height: 13px;
+}
+
+
+#signs {
+	background:url(Images/Signs.png) no-repeat;
+}
+
+.signDiv {
+	position: absolute; 
+	left: 20px; 
+	top: 108px;
+	width: 235px; 
+	height: 55px; 
+}
+
+#closedDiv {
+	display:none;
+	background:url(Images/Closed.png) no-repeat;
+}
+
+#closedSign {
+	position: absolute; 
+	left: 20px; 
+	top: 68px;
+	width: 235px; 
+	height: 55px; 
+}
+
+#closedTitle
+{
+	position: absolute;
+	top: 12px;
+	left: 1px;
+	width: 232px;
+	text-align: center;
+	font: 24px "Helvetica Neue";
+	font-weight: bold;
+	color:rgb(255, 255, 255);
+}
+
+
+/* Back */
+
+#back
+{
+	display: none; 
+	position:absolute;
+	top: 40px;
+	width: 276px; 
+	height: 147px; 
+	background:url(Images/back.png) no-repeat;
+}
+
+#done
+{
+	position: absolute;
+	top: 99px; 
+	left: 204px; 
+	height: 24px; 
+	width: 51px; 
+}
+
+
+#ziplabel {
+	top: 11px; 
+	left: 23px;
+}
+
+#zip {
+	position: absolute; 
+	color: black; 
+	font: 12px "LucidaGrande";
+	width: 177px; 
+	top: 25px; 
+	left: 22px; 
+}
+
+#unitlabel {
+	top: 10px; 
+	left: 208px; 
+}
+
+#unit {
+	position: absolute; 
+	top: 25px; 
+	left: 206px; 
+}
+
+
+.backlabel
+{
+	position: absolute;
+	font: 10px "Helvetica Neue";
+	font-weight: bold;
+	color:rgb(255, 255, 255);
+}
+
+
+#validate
+{
+	top: 48px;
+	left: 23px;
+	width: 177px; 
+	height: 20px; 
+}
+
+#logo {
+	position: absolute; 
+	top: 66px; 
+	left: 38px;
+	width: 200px; 
+	height: 17px;
+	cursor:pointer;
+}
+
+/* Additional front */
+
+#resortName1
+{
+	position: absolute;
+	left: 21px; 
+	top: 19px;
+	color: white;
+	width: 186px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	font: 22px "Arial Rounded MT Bold";
+	text-shadow: #6d6e71 0px -1px 1px;
+}
+
+
+#resortName
+{
+	position: absolute;
+	left: 21px; 
+	top: 59px;
+	color: white;
+	font: 22px "Arial Rounded MT Bold";
+	text-shadow: #3f0b00 0px -1px 1px;
+	cursor:pointer;
+}
+
+#temp
+{
+	position: absolute;
+	right: 33px; 
+	top: 55px;
+	font: 28px "Arial Rounded MT Bold";
+	color:rgb(255, 255, 255);
+	text-shadow: #3f0b00 0px -1px 1px;
+	text-align: right;
+}
+
+.signLabel
+{
+	position: absolute;
+	top: 31px;
+	text-align: center;
+	font: 14px "Helvetica Neue";
+	color:rgb(255, 255, 255);
+}
+
+.signValueWrapper, .signValueWrapper_celcius
+{
+	position: absolute;
+	width: 47px;
+	top: 5px;
+	text-align: center;
+	font: 24px "Helvetica Neue";
+	font-weight: bold;
+	color:rgb(255, 255, 255);
+}
+
+.signValue {
+	margin: 0 auto 0 1%;
+}
+
+.signValueWrapper_celcius .unitpunct {
+	font-size: 9px; 
+	text-align: left;
+	line-height: 7px;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.unitpunct
+{
+	font-size: 17px;
+	vertical-align: top;
+	margin-left: 2px;
+}
+
+#newLabel
+{
+	left: 3px;
+	width: 47px;
+}
+
+#baseLabel
+{
+	left: 64px;
+	width: 47px;
+}
+
+#trailsLabel
+{
+	left: 126px;
+	width: 47px;
+}
+
+#snowLabel
+{
+	left: 186px;
+	font-size: 10px;
+	letter-spacing:0;
+	line-height:10px;
+}
+
+#newtext
+{
+	left: 2px;
+}
+
+#basetext
+{
+	left: 63px;
+}
+
+#trails
+{
+	left: 124px;
+}
+
+#snowCondition
+{
+	position:absolute;
+	top: 6px;
+	left: 197px;
+}
+
+#closedText
+{
+	position:absolute;
+	left: 1px;
+	top: 20px;
+	width: 232px;
+}
+

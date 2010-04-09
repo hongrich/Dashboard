@@ -1,0 +1,376 @@
+body {
+margin:0;
+}
+
+#front {
+display:block;
+background-color:#FFF;
+height:360px;
+width:250px;
+min-width:250px;
+background-repeat:no-repeat;
+-webkit-border-radius:.5em;
+border-color:#0060bf;
+border-style:solid;
+border-width:2px;
+margin:5px 0 5px 15px;
+}
+
+#back {
+display:none;
+/*height:360px;
+width:250px;
+background-color:#3E3E3E;
+-webkit-border-radius:.5em;
+border-color:#777777;
+border-style:solid;
+border-width:2px;
+margin:5px 0 5px 15px;*/
+background-image:url(Images/back.png);
+height:380px;
+background-repeat:no-repeat;
+}
+
+#me {
+position:absolute;
+text-align:center;
+color:#FFF;
+font-family:HelveticaNeue-Bold;
+text-shadow:#191919 3px 3px 2px;
+width:200px;
+font-size:9pt;
+height:19px;
+left:35px;
+top:280px;
+}
+
+#website {
+position:absolute;
+text-align:center;
+font-family:HelveticaNeue-Bold;
+text-shadow:navy 2px 2px 2px;
+cursor:pointer;
+font-size:9pt;
+width:125px;
+color:#337bff;
+height:17px;
+left:30px;
+top:300px;
+}
+
+#magic {
+position:absolute;
+text-align:left;
+font-family:"Myriad Pro";
+color:#FFF;
+left:30px;
+top:25px;
+width:220px;
+}
+
+#magicform {
+position:absolute;
+font-size:12px;
+top:25px;
+}
+
+#magicform label {
+text-align:right;
+}
+
+#magicform select {
+left:80px;
+width:160px;
+}
+
+#growlDiv {
+position:absolute;
+text-align:left;
+font-size:12px;
+font-family:"Myriad Pro";
+color:#FFF;
+left:67px;
+top:180px;
+width:220px;
+}
+
+#custom {
+display:none;
+position:absolute;
+text-align:left;
+font-family:"Myriad Pro";
+color:#FFF;
+left:30px;
+top:210px;
+width:220px;
+}
+
+#deauth {
+position:absolute;
+left:95px;
+top:250px;
+}
+
+#info {
+position:absolute;
+right:18px;
+top:12px;
+width:13px;
+height:13px;
+}
+
+#resize {
+position: absolute;
+-apple-dashboard-region: dashboard-region(control rectangle);
+bottom:15px;
+left:253px;
+max-width:none;
+display:inline;
+}
+
+#resize:hover {
+cursor: se-resize;
+}
+
+#done {
+position:absolute;
+left:210px;
+top:339px;
+margin-left:auto;
+margin-top:auto;
+}
+
+#listDiv {
+margin-top:0;
+padding-top:0;
+position:absolute;
+top:105px;
+bottom:33px;
+text-align:left;
+left:17px;
+width:240px;
+display:block;
+}
+
+#listScrollbar {
+position:absolute;
+top:105px;
+bottom:33px;
+left:244px;
+width:19px;
+}
+
+#authDiv {
+font-family:"Myriad Pro";
+font-weight:700;
+font-size:14px;
+position:absolute;
+top:110px;
+text-align:left;
+left:30px;
+display:none;
+}
+
+#taskList {
+list-style-type:none;
+margin:0;
+padding:0;
+}
+
+#taskList li {
+font-family:"Futura";
+font-style:normal;
+font-size:13px;
+line-height:16px;
+min-height:16px;
+margin:1px 0 2px;
+padding:0 0 0 5px;
+clear:both;
+}
+
+#taskList .priority-1{
+border-left:5px solid #EA5200;
+padding:0;
+}
+
+#taskList .priority-2{
+border-left:5px solid #0060BF;
+padding:0;
+}
+
+#taskList .priority-3{
+border-left:5px solid #359AFF;
+padding:0;
+}
+
+#taskList li input {
+float:left;
+}
+
+#taskList li .taskname {
+float:left;
+width:202px;
+}
+
+#taskList li .taskname:hover {
+background-color:#ffc;
+}
+
+#taskList li .duedate {
+color:#777777;
+font-family:"Myriad Pro","Futura";
+float:right;
+font-size:12px;
+margin-left:5px;
+padding-top:3px;
+}
+
+#taskList li input {
+cursor:pointer;
+}
+
+#taskDetails {
+position:absolute;
+background-color:#fff;
+left:269px;
+top:100px;
+width:0;
+height:200px;
+-webkit-border-top-right-radius:.5em;
+-webkit-border-bottom-right-radius:.5em;
+border-color:#0060bf;
+border-style:none;
+border-width:2px 2px 2px 0;
+}
+
+#detailsDiv {
+font-family:verdana;
+font-size:11px;
+display:none;
+word-wrap:break-word;
+}
+
+#detailsDiv input, #detailsDiv select {
+display:none;
+}
+
+.CloseX,.CloseX:link,.CloseX:active,.CloseX:visited {
+text-decoration:none;
+font-weight:700;
+font-size:15px;
+position:absolute;
+top:-1px;
+right:5px;
+color:#969696;
+}
+
+.CloseX:hover {
+color:#0060bf;
+}
+
+#detailsNameDiv {
+margin:10px;
+}
+
+.detailsLink,.detailsLink:link,.etailsLink:active,.detailsLink:visited {
+font-weight:700;
+text-decoration:none;
+color:#0060bf;
+width:170px;
+padding:1px;
+}
+
+.detailsLink:hover {
+background-color:#FFC;
+}
+
+#detailsName_edit {
+width:160px;
+font-size:11px;
+}
+
+.detaildiv {
+margin-left:10px;
+}
+
+#detailsdue {
+margin-top:10px;
+width:170px;
+}
+
+#detailsdue_editfield {
+width:110px;
+font-size:11px;
+}
+
+#detailstags_editfield {
+width:110px;
+font-size:11px;
+}
+
+#more_details {
+margin-left:10px;
+margin-top:10px;
+width:170px;
+}
+
+.highlight {
+padding:1px;
+cursor:pointer;
+}
+
+.highlight:hover {
+background-color:#FFC;
+}
+
+#undo {
+display:none;
+background-image:url(Images/undo.png);
+background-repeat:no-repeat;
+width:16px;
+height:16px;
+position:absolute;
+float:left;
+bottom:17px;
+left:22px;
+}
+
+#loading {
+position:absolute;
+top:13px;
+left:246px;
+display:none;
+float:right;
+}
+
+#inputDiv {
+position:absolute;
+left:25px;
+top:80px;
+width:92%;
+}
+
+#taskinput {
+position:absolute;
+width:78%;
+font-size:12px;
+}
+
+#taskinput_list {
+position:absolute;
+right:19px;
+width:11%;
+}
+
+#cowimg {
+display:block;
+padding:5px;
+width:240px;
+margin:auto;
+}
+
+.url {
+cursor:pointer;
+color:blue;
+text-decoration:underline;
+}

@@ -1,0 +1,600 @@
+﻿body {
+	margin:0;
+}
+
+#front {
+	position:absolute;
+	/* kFrontCollapsedWidth */
+	width:176px; 
+	/* kFrontCollapsedHeight */
+	height:235px;
+}
+
+	#errorMsgBox {
+		position:absolute;
+		left:20px; right:20px;
+		top:30%; bottom:30px;
+		text-align:center;
+		color:white;
+		font:bold 15px "Helvetica Neue", Helvetica, sans-serif;
+	}
+
+	.corner {
+		position:absolute;
+		width:17px;
+		background-repeat:no-repeat;
+	}
+
+	.edge {
+		position:absolute;
+	}
+
+	#topLeft {
+		left:0; top:0;
+		height:14px;
+		background:url(Images/Corner_TopLeft.png);
+	}
+	
+	.expanded #topLeft {
+		background:url(Images/Corner_TopLeftBlack.png);
+	}
+
+	#topRight {
+		right:0; top:0;
+		height:14px;
+		background:url(Images/Corner_TopRight.png);
+	}
+
+	.expanded #topRight {
+		background:url(Images/Corner_TopRightBlack.png);
+	}
+	#bottomLeft {
+		left:0; bottom:0;
+		height:23px;
+		background:url(Images/Corner_BottomLeft.png) no-repeat;
+	}
+
+	#bottomRight {
+		right:0; bottom:0;
+		height:23px;
+		background:url(Images/Corner_BottomRight.png);
+	}
+
+	#topMid {
+		left:17px; right:17px; top:0;
+		height:14px;
+		background:url(Images/Stretch_Top.png);
+	}
+
+	#midMid {
+		position:absolute;
+		left:17px; right:17px; top:14px; bottom:23px;
+		background:transparent url(Images/Center.png);
+	}
+
+	#bottomMid {
+		left:17px; right:17px; bottom:0;
+		height:23px;
+		background:url(Images/Stretch_Bottom.png);
+	}
+
+	#midLeft {
+		left:0; top:14px; bottom:23px;
+		width:17px;
+		background:url(Images/Left.png);
+	}
+
+	#midRight {
+		right:0; top:14px; bottom:23px;
+		width:17px;
+		background:url(Images/Right.png);
+	}
+
+#back {
+	display:none;
+	position:relative;
+	width:501px; height:186px;
+	font:bold 10px "Helvetica Neue", Helvetica, sans-serif;
+	color:white;
+	background:transparent url(Images/backside.png) 0 0 no-repeat;
+}
+
+	#fandangoLogo {
+		position:absolute;
+		left:70px; top:35px;
+	}
+
+	#locationLabel {
+		position:absolute;
+		left:250px; top:65px;
+	}
+	
+	#locationTextField {
+		position:absolute;
+		left:250px; top:80px;
+	}
+	
+	#validateLabel	{
+		position:absolute;
+		left:250px; top:105px;
+		height:20px;
+	}
+
+	#doneButton {
+		position:absolute;
+		right:21px; bottom:24px;
+	}
+
+
+#posterWrap {
+	display:none;
+	position:absolute;
+	left:13px; top:8px;
+}		
+
+	.poster {
+		position:absolute;
+		left:7px; top:6px;
+		width:134px; height:193px;
+		border:1px solid #7e8894;
+	}		
+	
+	#poster1 {
+		opacity:1.0;
+	}
+	
+	#poster2 {
+		opacity:1.0;
+	}
+	
+	#compactShine {
+		position:absolute;
+		left:-2px; top:-2px;
+		width:154px; height:213px;
+		background:url(Images/Gloss.png) no-repeat;
+	}
+	
+/**** Expanded View ****/
+
+#expandedView {
+	position:absolute;
+	left:7px; right:7px;
+	top:2px; bottom:0;
+}
+
+	#expandedTop {
+		position:absolute;
+		left:0; right:0;
+		top:7px;
+		height:0;
+		-khtml-user-select:none;
+		background:url(Images/PegScaleDown.png) left bottom;
+	}
+
+		#browserContainer {
+			position:absolute;
+			z-index:2;
+			top:-7px;
+			width:486px; height:172px;
+			background:url(Images/DefaultMarquee.png) no-repeat;
+		}
+	
+			#topbar {
+				height:30px;
+			}
+			
+			#topbarClickRegion {
+				position:absolute;
+				left:140px; right:105px;
+				top:0;
+				height:30px;
+			}
+		
+			#daisyWheel {
+				position:absolute;
+				left:362px; top:5px;
+				opacity:0;
+			}
+	
+			#moviesTheatersSelector {
+				position:absolute;
+				left:11px; top:4px;
+			}
+		
+			#moviesTheatersSelector button {
+				border:0; margin:0; padding:0;
+				font:bold 16px "Helvetica Neue", Helvetica, sans-serif;
+				color:rgb(103, 103, 103);
+				text-shadow:0 -1px 0 black;
+				background:transparent;
+			}	
+		
+			#moviesTheatersSelector button.selected {
+				color:#c8c8c8;
+			}
+		
+			#dateSelectArrows {
+				position:absolute;
+				right:14px; top:9px;
+			}
+	
+			#dateSelectImage {
+				position:absolute;
+				right:4px; top:6px;
+			}
+		
+			#dateSelectText {
+				position:absolute;
+				right:22px; top:7px;
+				width:70px;
+				font:bold 12px "Helvetica Neue", Helvetica, sans-serif;
+				color:rgb(198, 198, 198);
+				text-shadow:0px -1px 0px black;
+				text-align:center;
+			}
+		
+			#dateSelect {
+				position:absolute;
+				right:15px; top:5px;
+				text-align:right;
+				opacity:0;
+			}
+		
+			#dateSelect option {
+				text-align:right;
+			}
+	
+			#browser {
+				position:absolute;
+				left:0; top:30px;
+				width:486px; height:142px;
+				border:0;
+			}
+		
+			#browser .AppleBrowserCol {
+				top:13px;
+				height:120px;
+				border:0;
+			}
+
+			#browser .AppleBrowserScroll {
+				top:3px; bottom:3px;
+				background:transparent;
+			}
+				
+			#browser .AppleBrowserCol2 {
+				width:62px;
+			}
+
+			#browser .AppleBrowserScroll2 {
+				left:462px !important;
+			}
+		
+			#browser li {
+				background:transparent url(Images/marqueedivider.png) 0 0 repeat-x;
+			}
+
+			#browser .AppleBrowserCol0 li {
+				background:transparent url(Images/Row.png) 0 0 no-repeat;
+			}
+
+			#browser li.selected {
+				background:transparent url(Images/selectorshort.png) 0 0 repeat-x;
+			}
+		
+			#browser .title,
+			#browser .theater,
+			#browser .time {
+				float:left;
+				padding:1px 0 1px;
+				font:bold 11px "Helvetica Neue", Helvetica, sans-serif;
+				color:rgb(20,20,20);
+				text-overflow:ellipsis;
+				overflow:hidden;
+				white-space:nowrap;
+			}
+		
+			#browser .title {
+				width:138px;
+			}
+		
+			#browser .theater {
+				width:160px;
+			}
+
+			#browser .rating {
+				float:right;
+				padding:2px 0 0;
+				font:bold 11px Baskerville, serif;
+				color:rgb(114, 114, 114);
+				text-shadow:0 1px 0 silver;
+			}
+		
+			#browser .theaterInfo { display:none; }
+			#browser .selected .theaterInfo { display:block; }
+		
+			#browser .theaterInfo {
+				float:right;
+				width:11px; height:16px;
+				border:0;
+				background:transparent url(Images/theaterinfo.png) 0 3px no-repeat;
+			}
+			#browser .theaterInfo:active {
+				opacity:.8;
+			}
+
+			#currentTheaterAddress,
+			#currentTheaterStreet,
+			#currentTheaterCity,
+			#currentTheaterState,
+			#currentTheaterZip {
+				cursor:pointer;
+			}
+		
+			#currentTheaterAddress:hover {
+				text-decoration:underline;
+				cursor:pointer;
+			}
+		
+			#browser .time {
+				width:45px;
+				text-align:right;
+			}
+		
+			#browser .selected span {
+				color:white;
+				text-shadow:0 1px 0 gray;
+			}
+	
+	#expandedBottom {
+		position:absolute;
+		left:0; right:0;
+		top:174px; bottom:0;
+	}
+	
+		#bottomPane {
+			position:absolute;
+			left:0; right:0; 
+			top:0; bottom:0;
+			opacity:0;
+		}
+	
+		#infoButton {
+			position:absolute;
+			left:5px; bottom:31px;
+			z-index:10;
+		}
+	
+		#theaterInfoPane {
+			position:absolute;
+			left:0; top:0; right:0; bottom:0;
+		}
+		
+			#currentTheaterLogo {
+				position:absolute;
+				left:17px; top:15px;
+				width:165px; height:86px;
+				background:transparent url(Images/ticket.png) 0 0 no-repeat;
+			}
+			
+			#currentTheaterFeatures {
+				padding-left:1.5em;
+			}
+			
+		#movieInfoPane {
+			position:absolute;
+			left:0; top:0; right:0; bottom:0;
+		}
+		
+			#currentViewerRating:link,
+			#currentViewerRating:visited {
+				color:white;
+				cursor:pointer;
+			}
+			
+			#currentViewerRating:hover {
+				text-decoration:none;
+				cursor:pointer;
+			}
+			
+			#currentPosterWrap {
+				position:absolute;
+				left:21px; top:15px;
+			}
+		
+			#currentPoster {
+				width:99px; height:143px;
+				border:1px solid #7e8894;
+			}
+			
+			#currentTicketTitle,
+			#currentPosterTitle {
+				position:absolute;
+				font:bold 12px "Helvetica Neue", Helvetica, sans-serif;
+				text-align:center;
+				color:#999;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space:normal;
+			}
+			
+			#currentTicketTitle {
+				left:28px; top:33px;
+				width:108px;
+			}
+			
+			#currentPosterTitle {
+				left:17px; top:33px;
+				width:67px;
+			}
+			
+			#trailerButton,
+			#ticketsButton {
+				position:absolute;
+				right:368px;
+				border:0;
+				padding-right:17px;
+				font:bold 11px "Helvetica Neue", Helvetica, sans-serif;
+				color:#b2b2b2;
+				text-shadow:0 1px 0 black;
+				background:transparent url(Images/gotoarrow.png) 100% 3px no-repeat;
+			}
+			
+			.enabledActionButton {
+				cursor:pointer;
+			}
+
+			.enabledActionButton:hover {
+				text-decoration:underline; 
+				cursor:pointer;
+			}
+	
+			.disabledActionButton {
+				opacity:.3;
+				cursor:default;
+			}
+
+			#trailerButton {
+				 top:173px;
+			}
+			
+			#ticketsButton {
+				 top:196px;
+			}
+			
+			#currentMovieInfo,
+			#currentTheaterInfo {
+				position:absolute;
+				left:138px; top:6px; right:26px;
+				height:217px;
+				padding-left:74px;
+				font:bold 11px/1.3 "Helvetica Neue", Helvetica, sans-serif;
+				color:white;
+				text-shadow:0 1px 0 black;
+			}
+			
+			#currentTheaterInfo {
+				left:213px;
+				padding-left:0px;
+			}
+
+			#currentMovieInfoScroll,
+			#currentTheaterInfoScroll {
+				position:absolute;
+				top:7px; right:2px;
+				width:19px; height:216px;
+				z-index:30;
+			}
+			
+				#currentTitle,
+				#currentTheaterName {
+					margin-top:6px;
+					width:196px;
+					font:bold 14px "Helvetica Neue", Helvetica, sans-serif;
+					color:white;
+				}
+				
+				#currentRating {
+					position:absolute;
+					right:8px; top:7px;
+					font:bold 12px Baskerville, serif;
+					padding:0 3px;
+					border:1px solid white;
+				}
+				
+				#currentMovieInfo dl {
+					margin-left:-84px;
+				}
+				
+				#currentMovieInfo dt {
+					float:left;
+					clear:left;
+					width:80px;
+					color:#898989;
+					text-align:right;
+				}
+				
+				#currentMovieInfo dd {
+					margin:0 0 0 85px;
+					min-height:14px;
+				}
+								
+				#currentSynopsis {
+					margin-left:1px;
+				}
+				
+
+/********* Trailer Pane **********/
+		
+		#trailerPane {
+			position:absolute;
+			left:0; right:0; top:0; bottom:0;
+			z-index:11;
+		}
+
+		#movie {
+			position:absolute;
+			left:3px; top:2px;
+		}
+		
+		#trailerControls {
+			position:absolute;
+			left:0; right:0;
+			top:0; bottom:12px;
+			background:url(Images/TrailerExtension.png) left bottom no-repeat;
+		}
+		
+			#backButton {
+				position:absolute;
+				left:3px; bottom:0px;
+				border:0; margin:0; padding:0;
+				width:61px; height:21px;
+				background:transparent url(Images/Controls/back.png) 0 0 no-repeat;
+			}
+			#backButton:active {
+				background:transparent url(Images/Controls/back_on.png) 0 0 no-repeat;
+			}
+		
+			#playButton {
+				position:absolute;
+				left:67px; bottom:0px;
+				border:0; margin:0; padding:0;
+				width:61px; height:21px;
+			}
+			
+			.paused #playButton {
+				background:transparent url(Images/Controls/play.png) 0 0 no-repeat;
+			}
+			.paused #playButton:active {
+				background:transparent url(Images/Controls/play_on.png) 0 0 no-repeat;
+			}
+		
+			.playing #playButton {
+				background:transparent url(Images/Controls/pause.png) 0 0 no-repeat;
+			}
+			.playing #playButton:active {
+				background:transparent url(Images/Controls/pause_on.png) 0 0 no-repeat;
+			}
+		
+			#trailerSlider {
+				position:absolute;
+				left:131px; bottom:-1px;
+				width:353px;
+			}
+		
+			#track {
+				position:absolute;
+				left:131px; bottom:2px;
+				width:358px; height:19px;
+	 			background:transparent url(Images/Controls/track.png) 0 0 no-repeat;
+			}
+		
+			#trailerProgressIndicator {
+				position:absolute;
+				left:1px; bottom:5px;
+				height:19px;
+				z-index:5;
+				height:16px;
+				opacity:.25;
+				background:transparent url(Images/Controls/__duration.png) 0 0 no-repeat;
+			}
