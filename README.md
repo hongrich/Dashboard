@@ -5,9 +5,9 @@ This application has just recently been rejected by Apple and now I am making it
 
 Video Demo (3 different links, all the same video):
 
-* http://vimeo.com/10515296
-* http://www.youtube.com/watch?v=NBIlyC71oeo
-* http://richhong.com/Dashboard/
+* [http://vimeo.com/10515296](http://vimeo.com/10515296)
+* [http://www.youtube.com/watch?v=NBIlyC71oeo](http://www.youtube.com/watch?v=NBIlyC71oeo)
+* [http://richhong.com/Dashboard/](http://richhong.com/Dashboard/)
 
 Inspired by Apple's Dashboard application for Mac, Dashboard for iPad has been completely rewritten for iPad. It brings the ability of running multiple mini-applications, widgets, to all iPad users. With access to any of the existing Dashboard widgets for Mac available to download right within this application, you can quickly add several fun and functional widgets to your Dashboard.
 
