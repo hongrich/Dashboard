@@ -29,7 +29,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DashboardWidgetsView.h"
-#import "DashboardDownalodViewController.h"
+#import "DashboardDownloadViewController.h"
 
 @interface DashboardViewController : UIViewController <UIWebViewDelegate, DashboardWidgetsViewDelegate> {
     UIView *containerView;

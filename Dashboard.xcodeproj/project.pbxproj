@@ -24,8 +24,8 @@
 		9B5E3F9C114B246D00279B40 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E3F97114B246D00279B40 /* ZipArchive.mm */; };
 		9B5E3FA7114B2E3C00279B40 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5E3FA6114B2E3C00279B40 /* libz.dylib */; };
 		9B5FB7B6116AB6A000BDC59A /* WidgetResources in Resources */ = {isa = PBXBuildFile; fileRef = 9B5FB777116AB6A000BDC59A /* WidgetResources */; };
-		9B6871461156CCAB0071117A /* DashboardDownalodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */; };
-		9B6871471156CCAB0071117A /* DashboardDownalodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */; };
+		9B6871461156CCAB0071117A /* DashboardDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6871441156CCAB0071117A /* DashboardDownloadViewController.m */; };
+		9B6871471156CCAB0071117A /* DashboardDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6871451156CCAB0071117A /* DashboardDownloadViewController.xib */; };
 		9B6878621158267B0071117A /* DashboardNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6878611158267B0071117A /* DashboardNew.png */; };
 		9B6878901158304B0071117A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B68788F1158304B0071117A /* Icon.png */; };
 		9B6878B3115850450071117A /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B6878B2115850450071117A /* Default-Landscape.png */; };
@@ -71,9 +71,9 @@
 		9B5E3F97114B246D00279B40 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		9B5E3FA6114B2E3C00279B40 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9B5FB777116AB6A000BDC59A /* WidgetResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WidgetResources; sourceTree = "<group>"; };
-		9B6871431156CCAB0071117A /* DashboardDownalodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardDownalodViewController.h; sourceTree = "<group>"; };
-		9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardDownalodViewController.m; sourceTree = "<group>"; };
-		9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardDownalodViewController.xib; sourceTree = "<group>"; };
+		9B6871431156CCAB0071117A /* DashboardDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardDownloadViewController.h; sourceTree = "<group>"; };
+		9B6871441156CCAB0071117A /* DashboardDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardDownloadViewController.m; sourceTree = "<group>"; };
+		9B6871451156CCAB0071117A /* DashboardDownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardDownloadViewController.xib; sourceTree = "<group>"; };
 		9B6878611158267B0071117A /* DashboardNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardNew.png; sourceTree = "<group>"; };
 		9B68788F1158304B0071117A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		9B6878B2115850450071117A /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 			children = (
 				9BA4EB52115C61B000EE3998 /* DashboardDownloadItem.h */,
 				9BA4EB53115C61B000EE3998 /* DashboardDownloadItem.m */,
-				9B6871431156CCAB0071117A /* DashboardDownalodViewController.h */,
-				9B6871441156CCAB0071117A /* DashboardDownalodViewController.m */,
-				9B6871451156CCAB0071117A /* DashboardDownalodViewController.xib */,
+				9B6871431156CCAB0071117A /* DashboardDownloadViewController.h */,
+				9B6871441156CCAB0071117A /* DashboardDownloadViewController.m */,
+				9B6871451156CCAB0071117A /* DashboardDownloadViewController.xib */,
 				1D3623240D0F684500981E51 /* DashboardAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DashboardAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* DashboardViewController.h */,
@@ -272,7 +272,7 @@
 				9BBAEC35111A6EE500CA2587 /* DashboardAdd.png in Resources */,
 				9BBAEC36111A6EE500CA2587 /* DashboardAppsBackground.png in Resources */,
 				9B3D8097111BB64A00CA1B74 /* DashboardClose.png in Resources */,
-				9B6871471156CCAB0071117A /* DashboardDownalodViewController.xib in Resources */,
+				9B6871471156CCAB0071117A /* DashboardDownloadViewController.xib in Resources */,
 				9B6878621158267B0071117A /* DashboardNew.png in Resources */,
 				9B6878901158304B0071117A /* Icon.png in Resources */,
 				9B6878B3115850450071117A /* Default-Landscape.png in Resources */,
@@ -302,7 +302,7 @@
 				9B5E3F9A114B246D00279B40 /* unzip.c in Sources */,
 				9B5E3F9B114B246D00279B40 /* zip.c in Sources */,
 				9B5E3F9C114B246D00279B40 /* ZipArchive.mm in Sources */,
-				9B6871461156CCAB0071117A /* DashboardDownalodViewController.m in Sources */,
+				9B6871461156CCAB0071117A /* DashboardDownloadViewController.m in Sources */,
 				9BA4EB54115C61B000EE3998 /* DashboardDownloadItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

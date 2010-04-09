@@ -1,5 +1,5 @@
 //
-//  DashboardDownalodViewController.m
+//  DashboardDownloadViewController.m
 //  Dashboard
 //
 //  Copyright (c) 2010 Rich Hong
@@ -26,9 +26,9 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "DashboardDownalodViewController.h"
+#import "DashboardDownloadViewController.h"
 
-@implementation DashboardDownalodViewController
+@implementation DashboardDownloadViewController
 
 @synthesize webView;
 

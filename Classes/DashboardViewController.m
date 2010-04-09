@@ -93,7 +93,7 @@
 #pragma mark DownloadView
 
 - (void)showDownloadView {    
-    DashboardDownalodViewController *downloadView = [[DashboardDownalodViewController alloc] initWithNibName:@"DashboardDownalodViewController" bundle:nil];
+    DashboardDownloadViewController *downloadView = [[DashboardDownloadViewController alloc] initWithNibName:@"DashboardDownloadViewController" bundle:nil];
     [self presentModalViewController:downloadView animated:YES];
     [downloadView release];
 

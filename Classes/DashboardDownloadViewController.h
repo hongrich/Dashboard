@@ -1,5 +1,5 @@
 //
-//  DashboardDownalodViewController.h
+//  DashboardDownloadViewController.h
 //  Dashboard
 //
 //  Copyright (c) 2010 Rich Hong
@@ -31,7 +31,7 @@
 #import "DashboardViewController.h"
 #import "DashboardWidgetsView.h"
 
-@interface DashboardDownalodViewController : UIViewController<UIWebViewDelegate> {
+@interface DashboardDownloadViewController : UIViewController<UIWebViewDelegate> {
     UIWebView *webView;
 }
 
