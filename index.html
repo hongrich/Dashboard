@@ -110,13 +110,13 @@
   videos[0].width = 622;
   videos[0].height = 480;
   videos[0].poster = 'poster_iPhone.jpg';
-  videos[0].src = 'Dashboard_iPhone.m4v';
+  videos[0].src = 'http://richhong.com/Dashboard/Dashboard_iPhone.m4v';
   videos[1] = {};
   videos[1].max_width = 768;
   videos[1].width = 934;
   videos[1].height = 720;
   videos[1].poster = 'poster_iPad.jpg';
-  videos[1].src = 'Dashboard_iPad.m4v';
+  videos[1].src = 'http://richhong.com/Dashboard/Dashboard_iPad.m4v';
 
   if (Modernizr.video) {
       // <video> support
@@ -130,7 +130,7 @@
               document.getElementById("video").style.width = videos[1].width;
               document.getElementById("video").style.height = videos[1].height;
           }else{
-              document.getElementById("video").innerHTML = '<video width="1126px" height="868px" poster="poster.jpg" src="Dashboard.mp4" controls></video>';
+              document.getElementById("video").innerHTML = '<video width="1126px" height="868px" poster="poster.jpg" src="http://richhong.com/Dashboard/Dashboard.mp4" controls></video>';
               document.getElementById("video").style.width = '1126px';
               document.getElementById("video").style.height = '868px';
           }
