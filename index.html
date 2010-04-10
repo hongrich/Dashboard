@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="no-js">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>hongrich/Dashboard @ GitHub</title>
+    <script src="modernizr-1.1.min.js"></script>
 	
 	<style type="text/css">
 		body {
@@ -13,6 +14,10 @@
   		background-color: #000000;
 		  font-family: "Helvetica,Arial,FreeSans";
   		color: #ffffff;
+    }
+    #video{
+        margin:0 auto;
+        display:block;
     }
     #container {
       margin: 0 auto;
@@ -36,6 +41,9 @@
 <body>
   <a href="http://github.com/hongrich/Dashboard"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
+  <div id="video">
+  </div>
+
   <div id="container">
 
     <div class="download">
@@ -54,8 +62,7 @@
 
     <p>This application has just recently been rejected by Apple and now I am making it open source, so developers can install this on their iPad if they want.</p>
 
-    <p>Video Demo (3 different links, all the same video):</p>
-
+    <p>Video (3 different links of the same video):</p>
     <ul>
         <li><a href="http://vimeo.com/10515296">http://vimeo.com/10515296</a></li>
         <li><a href="http://www.youtube.com/watch?v=NBIlyC71oeo">http://www.youtube.com/watch?v=NBIlyC71oeo</a></li>
@@ -90,6 +97,55 @@
     </div>
 
   </div>
+
+  <script type="text/javascript">
+  function videoHTML (video) {
+      return '<video width="' + video.width + 'px" height="' + video.height + 'px" poster="' + video.poster + '" src="' + video.src + '" controls></video>';
+  }
+
+  // Select different video based on device width
+  var videos = [];
+  videos[0] = {};
+  videos[0].max_width = 480;
+  videos[0].width = 622;
+  videos[0].height = 480;
+  videos[0].poster = 'poster_iPhone.jpg';
+  videos[0].src = 'Dashboard_iPhone.m4v';
+  videos[1] = {};
+  videos[1].max_width = 768;
+  videos[1].width = 934;
+  videos[1].height = 720;
+  videos[1].poster = 'poster_iPad.jpg';
+  videos[1].src = 'Dashboard_iPad.m4v';
+
+  if (Modernizr.video) {
+      // <video> support
+      if (Modernizr.video.h264) {
+          if (window.screen.width <= videos[1].height) {
+              document.getElementById("video").innerHTML = videoHTML(videos[0]);
+              document.getElementById("video").style.width = videos[0].width;
+              document.getElementById("video").style.height = videos[0].height;
+          }else if (window.screen.width <= 868) {
+              document.getElementById("video").innerHTML = videoHTML(videos[1]);
+              document.getElementById("video").style.width = videos[1].width;
+              document.getElementById("video").style.height = videos[1].height;
+          }else{
+              document.getElementById("video").innerHTML = '<video width="1126px" height="868px" poster="poster.jpg" src="Dashboard.mp4" controls></video>';
+              document.getElementById("video").style.width = '1126px';
+              document.getElementById("video").style.height = '868px';
+          }
+      }else if (Modernizr.video.ogg) {
+          document.getElementById("video").innerHTML = '<video width="1126px" height="868px" poster="poster.jpg" src="Dashboard.ogv" controls></video>';
+          document.getElementById("video").style.width = '1126px';
+          document.getElementById("video").style.height = '868px';
+      }
+  }else{
+      // Play youtube video
+      document.getElementById("video").innerHTML = '<object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/NBIlyC71oeo&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/NBIlyC71oeo&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>';
+      document.getElementById("video").style.width = '640px';
+      document.getElementById("video").style.height = '505px';
+  }
+  </script>
 
   <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
