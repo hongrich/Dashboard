@@ -92,10 +92,10 @@
 #pragma mark -
 #pragma mark DownloadView
 
-- (void)showDownloadView {    
-    DashboardDownloadViewController *downloadView = [[DashboardDownloadViewController alloc] initWithNibName:@"DashboardDownloadViewController" bundle:nil];
-    [self presentModalViewController:downloadView animated:YES];
-    [downloadView release];
+- (void)showDownloadView {
+    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:[NSURL URLWithString:@"http://www.apple.com/downloads/dashboard/categories.html"]];
+    [self presentModalViewController:browserView animated:YES];
+    [browserView release];
 
     [self.widgetsView endEditing];
 }

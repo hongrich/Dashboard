@@ -150,6 +150,7 @@
     [self.webView stringByEvaluatingJavaScriptFromString:@"widget.onhide();"];
     
     self.imageView = nil;
+    self.webView.delegate = nil;
     self.webView = nil;
     self.closeButton = nil;
     self.path = nil;

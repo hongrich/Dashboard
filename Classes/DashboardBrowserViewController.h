@@ -1,5 +1,5 @@
 //
-//  DashboardDownloadViewController.h
+//  DashboardBrowserViewController.h
 //  Dashboard
 //
 //  Copyright (c) 2010 Rich Hong
@@ -27,16 +27,35 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 #import "DashboardViewController.h"
-#import "DashboardWidgetsView.h"
 
-@interface DashboardDownloadViewController : UIViewController<UIWebViewDelegate> {
+@interface DashboardBrowserViewController : UIViewController<UIWebViewDelegate, UIActionSheetDelegate> {
     UIWebView *webView;
+    NSURL *home;
+    
+    UIToolbar *toolbar;
+    UIBarButtonItem *homeButton;
+    UIBarButtonItem *backButton;
+    UIBarButtonItem *forwardButton;
+    UIActivityIndicatorView *spinner;
+    UIBarButtonItem *actionButton;
+    
+    UIActionSheet *actionSheet;
 }
 
-- (IBAction)cancel; 
+- (id)initWithHome:(NSURL *)homeURL;
+- (IBAction)cancel;
+- (IBAction)goHome;
+- (IBAction)action;
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) NSURL *home;
+
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *homeButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *spinner;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *actionButton;
 
 @end
