@@ -99,6 +99,14 @@
     [self addGestureRecognizer:dragGesture];
     [dragGesture release];
     
+    // Swipe gesture for flipping widget
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    swipeGesture.numberOfTouchesRequired = 2;
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionUp;
+    [swipeGesture setDelegate:self];
+    [self addGestureRecognizer:swipeGesture];
+    [swipeGesture release];
+
     // Add close button
     UIImage *closeImage = [UIImage imageNamed:@"DashboardClose.png"];
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -234,6 +242,27 @@
             [self.webView stringByEvaluatingJavaScriptFromString:@"widget.ondragend();"];
             break;
     }
+}
+
+- (void)handleSwipe:(UIGestureRecognizer *)sender {
+    // Find info button flipper
+    [self.webView stringByEvaluatingJavaScriptFromString:@"var images = document.getElementsByTagName('img'); var res;"
+     "var infoVisible = function (info) {"
+     "  while (info != document) {"
+     "      if (window.getComputedStyle(info, null).display == 'none') {"
+     "          return false;"
+     "      }"
+     "  info = info.parentNode;"
+     "  }"
+     "  return true;"
+     "};"
+     "var mouseClick = function (info) {"
+     "  var evObj = document.createEvent('MouseEvents');"
+     "  evObj.initMouseEvent( 'click', true, true, window, 1, 12, 345, 7, 220, false, false, true, false, 0, null );"
+     "  info.dispatchEvent(evObj);"
+     "};"
+     "for (i = 0; i < images.length; i++) {if (images[i].alt == 'Info'){res = images[i].parentNode;break;}}"
+     "if (res && infoVisible(res)) mouseClick(res);"];
 }
 
 - (void)closeWidget {

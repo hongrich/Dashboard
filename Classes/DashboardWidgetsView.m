@@ -392,7 +392,7 @@ WARNING:
     UILongPressGestureRecognizer *holdGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHold:)];
     [item addGestureRecognizer:holdGesture];
     [holdGesture release];
-    item.dragGesture = [[NSClassFromString(@"UIDragRecognizer") alloc] initWithTarget:self action:@selector(buttonDrag:)];
+    item.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(buttonDrag:)];
     [item.icon addTarget:self action:@selector(addWidget:) forControlEvents:UIControlEventTouchUpInside];
     
     [item.closeButton addTarget:self action:@selector(removeItem:) forControlEvents:UIControlEventTouchUpInside];

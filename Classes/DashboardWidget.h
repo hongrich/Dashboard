@@ -60,6 +60,7 @@
 
 - (void)closeWidget;
 - (void)handleDrag:(UIGestureRecognizer *)sender;
+- (void)handleSwipe:(UIGestureRecognizer *)sender;
 
 - (void)resizeAndMoveToOnMainThread:(NSArray *)args;
 
