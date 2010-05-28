@@ -25,6 +25,7 @@ Features
 * Drag widgets by press and hold on a widget (dragging multiple widgets supported)
 * Press and hold on widget icon to rearrange or remove. Press and hold again to exit edit mode
 * Download new widgets from Apple's website
+* Easier access of widget setting via two-finger swipe gesture in either up or down direction
 * Sync with iTunes
 
 Known Issues

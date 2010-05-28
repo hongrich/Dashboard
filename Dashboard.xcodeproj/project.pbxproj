@@ -36,6 +36,8 @@
 		9BBAEC2C111A6EC300CA2587 /* DashboardWidgetsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBAEC2A111A6EC300CA2587 /* DashboardWidgetsView.m */; };
 		9BBAEC35111A6EE500CA2587 /* DashboardAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBAEC33111A6EE500CA2587 /* DashboardAdd.png */; };
 		9BBAEC36111A6EE500CA2587 /* DashboardAppsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBAEC34111A6EE500CA2587 /* DashboardAppsBackground.png */; };
+		9BCD62B711AA5BC700C20219 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD62B611AA5BC700C20219 /* README.md */; };
+		9BCD62BD11AAC3FF00C20219 /* dlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD62BC11AAC3FF00C20219 /* dlist.plist */; };
 		9BE4BFB411A64DF4004E0A09 /* DashboardBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE4BFB311A64DF4004E0A09 /* DashboardBrowserViewController.xib */; };
 		9BE4BFC311A64E16004E0A09 /* backIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BE4BFC211A64E16004E0A09 /* backIcon.png */; };
 		9BE4BFC811A64E56004E0A09 /* forwardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BE4BFC711A64E56004E0A09 /* forwardIcon.png */; };
@@ -90,6 +92,8 @@
 		9BBAEC2A111A6EC300CA2587 /* DashboardWidgetsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardWidgetsView.m; sourceTree = "<group>"; };
 		9BBAEC33111A6EE500CA2587 /* DashboardAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardAdd.png; sourceTree = "<group>"; };
 		9BBAEC34111A6EE500CA2587 /* DashboardAppsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardAppsBackground.png; sourceTree = "<group>"; };
+		9BCD62B611AA5BC700C20219 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		9BCD62BC11AAC3FF00C20219 /* dlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dlist.plist; sourceTree = "<group>"; };
 		9BE4BFB311A64DF4004E0A09 /* DashboardBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DashboardBrowserViewController.xib; path = ../DashboardBrowserViewController.xib; sourceTree = "<group>"; };
 		9BE4BFC211A64E16004E0A09 /* backIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backIcon.png; sourceTree = "<group>"; };
 		9BE4BFC711A64E56004E0A09 /* forwardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forwardIcon.png; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9BCD62BC11AAC3FF00C20219 /* dlist.plist */,
 				9BBAEB96111A54A500CA2587 /* Dashboard.app */,
 			);
 			name = Products;
@@ -190,6 +195,7 @@
 				2899E5210DE3E06400AC0155 /* DashboardViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				9BCD62B611AA5BC700C20219 /* README.md */,
 				9B5FB777116AB6A000BDC59A /* WidgetResources */,
 			);
 			name = "Resources-iPad";
@@ -292,6 +298,8 @@
 				9BE4BFC311A64E16004E0A09 /* backIcon.png in Resources */,
 				9BE4BFC811A64E56004E0A09 /* forwardIcon.png in Resources */,
 				9BE4BFF911A7086E004E0A09 /* homeIcon.png in Resources */,
+				9BCD62B711AA5BC700C20219 /* README.md in Resources */,
+				9BCD62BD11AAC3FF00C20219 /* dlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +389,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
+				CODE_SIGN_ENTITLEMENTS = dlist.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos3.2]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;

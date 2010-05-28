@@ -100,6 +100,7 @@
     [dragGesture release];
     
     // Swipe gesture for flipping widget
+    // Actived by two finger swipe in either up or down direction
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     swipeGesture.numberOfTouchesRequired = 2;
     swipeGesture.direction = UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionUp;
@@ -245,7 +246,21 @@
 }
 
 - (void)handleSwipe:(UIGestureRecognizer *)sender {
-    // Find info button flipper
+    // When a swipe is detected, flip widget to its back if and only if it's currently displaying the front
+    // The following javascript tries to do that based on a few assumptions
+    // 1. Look through all 'img' elements and find one with alt attribute equals to 'Info'
+    // 2. The parent node of that element is the div for info button
+    // 3. If the info button exists and widget is currently displaying the side with the info button, emulate a mouse click on it
+    // We guess which side the widget is currently displaying by traversing the DOM tree upwards from the info button.
+    // If there is any element that has css display set to none, then the info button is not visible.
+    // Since there is no way to determine the event handlers associated with a particular event for a particular element, we emulate a mosue click instead.
+
+    // Some of the cases that this might fail to perform properly:
+    // * Widget does not use the standard apple info button
+    // * There are more than one info button
+    // * There are more than one img with alt of 'Info'
+    // * Front of the widget is not hidden by setting display to 'none'
+
     [self.webView stringByEvaluatingJavaScriptFromString:@"var images = document.getElementsByTagName('img'); var res;"
      "var infoVisible = function (info) {"
      "  while (info != document) {"
