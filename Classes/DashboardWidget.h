@@ -42,6 +42,8 @@
     NSInteger positionX;
     NSInteger positionY;
 
+    NSString *js_directory_url;
+
     id js_calculator;
 
     id js_ondragstart;
@@ -77,5 +79,7 @@
 @property (nonatomic, retain) NSString *js_identifier;
 @property (nonatomic) NSInteger positionX;
 @property (nonatomic) NSInteger positionY;
+
+@property (nonatomic, retain) NSString *js_directory_url;
 
 @end

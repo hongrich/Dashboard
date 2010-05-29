@@ -30,6 +30,7 @@
 #import "DashboardViewController.h"
 #import "DashboardWidget.h"
 
+// TODO: replace these globals with singletons
 static NSString *_widgetPath = nil;
 static NSString *_widgetResourcesPath = nil;
 
@@ -38,7 +39,36 @@ static NSString *_widgetResourcesPath = nil;
 @synthesize window;
 @synthesize viewController;
 
+// http://stackoverflow.com/questions/510216/can-you-make-the-settings-in-settings-bundle-default-even-if-you-dont-open-the-s
+- (void)registerDefaultsFromSettingsBundle {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if (!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for (NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    [defaultsToRegister release];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // register defaults if Settings app has not been opened since Dashboard is installed
+    NSString *directory_url = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_url"];
+    if (!directory_url) {
+        [self registerDefaultsFromSettingsBundle];
+    }
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     _widgetResourcesPath = [[[paths objectAtIndex:0] stringByAppendingPathComponent:@"WidgetResources"] retain];
     paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

@@ -27,6 +27,7 @@ Features
 * Download new widgets from Apple's website
 * Easier access of widget setting via two-finger swipe gesture in either up or down direction
 * Sync with iTunes
+* Default widget download directory can be changed in Settings app and optionally specify username and password in the URL. URL is available to widget as widget.directory_url
 
 Known Issues
 ------------

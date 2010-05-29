@@ -93,7 +93,8 @@
 #pragma mark DownloadView
 
 - (void)showDownloadView {
-    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:[NSURL URLWithString:@"http://www.apple.com/downloads/dashboard/categories.html"]];
+    NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_url"]];
+    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:url];
     [self presentModalViewController:browserView animated:YES];
     [browserView release];
 

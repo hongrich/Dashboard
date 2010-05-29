@@ -41,6 +41,7 @@
 @synthesize js_identifier;
 @synthesize positionX;
 @synthesize positionY;
+@synthesize js_directory_url;
 
 #pragma mark -
 #pragma mark UIGestureRecognizerDelegate Methods
@@ -115,6 +116,8 @@
     [self.closeButton setImage:closeImage forState:UIControlStateNormal];
     [self.closeButton addTarget:self action:@selector(closeWidget) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.closeButton];
+
+    js_directory_url = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_url"];
 }
 
 - (id)initWithFrame:(CGRect)frame path:(NSString*)aPath identifier:(NSString*)aIdentifier{
@@ -165,6 +168,7 @@
     self.path = nil;
     self.bundleIdentifier = nil;
     self.js_identifier = nil;
+    self.js_directory_url = nil;
     [super dealloc];
 }
 
@@ -361,7 +365,7 @@
     "}"
     "return eval(exp);"
     "};"];
-    
+
     // Call widget.onshow
     [self.webView stringByEvaluatingJavaScriptFromString:@"widget.onshow();"];
 }
