@@ -92,9 +92,34 @@
 #pragma mark -
 #pragma mark DownloadView
 
+// Create directory URL from user preference, including adding username and password into URL if provided.
+- (NSURL*)createDirectoryURL {
+    NSString *urlString = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_url"];
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_username"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_password"];
+    NSString *host = [[NSURL URLWithString:urlString] host];
+    NSURL *url;
+
+    NSMutableArray *urlParts = [NSMutableArray arrayWithArray:[urlString componentsSeparatedByString:host]];
+    // url ends with host with no trailing slash, so we add one
+    if ([urlParts count] < 2) {
+        [urlParts addObject:@"/"];
+    }
+
+    // 3 cases: both username and password, only username, no username nor password
+    if (username && password) {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@", [urlParts objectAtIndex:0], username, password, host, [urlParts objectAtIndex:1]]];
+    }else if (username) {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@@%@%@", [urlParts objectAtIndex:0], username, host, [urlParts objectAtIndex:1]]];
+    }else {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", [urlParts objectAtIndex:0], host, [urlParts objectAtIndex:1]]];
+    }
+
+    return url;
+}
+
 - (void)showDownloadView {
-    NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"preference_directory_url"]];
-    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:url];
+    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:[self createDirectoryURL]];
     [self presentModalViewController:browserView animated:YES];
     [browserView release];
 

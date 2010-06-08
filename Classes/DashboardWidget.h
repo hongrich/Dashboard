@@ -43,6 +43,8 @@
     NSInteger positionY;
 
     NSString *js_directory_url;
+    NSString *js_directory_username;
+    NSString *js_directory_password;
 
     id js_calculator;
 
@@ -79,7 +81,5 @@
 @property (nonatomic, retain) NSString *js_identifier;
 @property (nonatomic) NSInteger positionX;
 @property (nonatomic) NSInteger positionY;
-
-@property (nonatomic, retain) NSString *js_directory_url;
 
 @end
