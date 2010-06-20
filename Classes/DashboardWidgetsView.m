@@ -158,25 +158,9 @@
 - (void)addWidget:(id)sender {
     if ([sender isKindOfClass:[UIButton class]] && [[sender superview] isKindOfClass:[DashboardWidgetItem class]]) {
         DashboardWidgetItem *item = (DashboardWidgetItem*)[sender superview];
-    
-        // Generate random string as widget identifier
-        CFUUIDRef theUUID = CFUUIDCreate(NULL);
-        NSString *identifier = (NSString *)CFUUIDCreateString(NULL, theUUID);
-        CFRelease(theUUID);
 
-        NSBundle *widgetBundle = [NSBundle bundleWithPath:item.path];
-        
-        NSInteger width = [[widgetBundle objectForInfoDictionaryKey:@"Width"] intValue];
-        NSInteger height = [[widgetBundle objectForInfoDictionaryKey:@"Height"] intValue];
-        
-        // Create widget
-        DashboardWidget *widget = [[DashboardWidget alloc] initWithFrame:CGRectMake(floor(([[self superview] bounds].size.width - width) / 2), floor(([[self superview] bounds].size.height - height) / 2), width, height) path:item.path identifier:identifier];
-        // Add this widget to containerView
-        [delegate widgetDidAdd:widget];
-        
-        // Release stuff
-        [widget release];
-        [identifier release];
+        // Add this widget to view
+        [delegate widgetDidAdd:item.path];
     }
 }
 

@@ -86,7 +86,7 @@
 
 @protocol DashboardWidgetsViewDelegate <NSObject>
 
-- (void)widgetDidAdd:(DashboardWidget *)widget;
+- (void)widgetDidAdd:(NSString *)path;
 - (void)itemDidRemove:(NSString *)bundleIdentifier;
 
 @end

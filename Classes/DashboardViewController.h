@@ -31,15 +31,22 @@
 #import "DashboardWidgetsView.h"
 #import "DashboardBrowserViewController.h"
 
-@interface DashboardViewController : UIViewController <UIWebViewDelegate, DashboardWidgetsViewDelegate> {
+@interface DashboardViewController : UIViewController <DashboardWidgetsViewDelegate, UIScrollViewDelegate> {
     UIView *containerView;
 	DashboardWidgetsView *widgetsView;
 	BOOL showingWidgetsView;
 
 	UIButton *addButton;
-
     UIButton *newButton;
+
+    UIScrollView *scrollView;
+    UIPageControl *pageControl;
+
+    // To be used when scrolls originate from the UIPageControl
+    BOOL pageControlUsed;
 }
+
+- (IBAction)changePage:(id)sender;
 
 # pragma -
 # pragma WidgetView
@@ -55,8 +62,10 @@
 @property (nonatomic, retain) DashboardWidgetsView *widgetsView;
 
 @property (nonatomic, retain) UIButton *addButton;
-
 @property (nonatomic, retain) UIButton *newButton;
+
+@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @end
 

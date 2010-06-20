@@ -101,7 +101,7 @@ static NSString *_widgetResourcesPath = nil;
                         widget.closeButton.hidden = YES;
                     }
                     
-                    [self.viewController.containerView addSubview:widget];
+                    [self.viewController.scrollView addSubview:widget];
                 }
             }
         }
@@ -118,10 +118,10 @@ static NSString *_widgetResourcesPath = nil;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[NSUserDefaults standardUserDefaults] setObject:self.viewController.widgetsView.paths forKey:@"widgetPaths"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[self.viewController.containerView subviews]] forKey:@"widgets"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[self.viewController.scrollView subviews]] forKey:@"widgets"];
 
     /*
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[self.viewController.containerView subviews]];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[self.viewController.scrollView subviews]];
     [data writeToFile:@"/Users/rich/iPhone/Dashboard/firstRun" atomically:NO];
      */
 }

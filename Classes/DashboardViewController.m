@@ -29,13 +29,15 @@
 #import "DashboardViewController.h"
 #import "DashboardWidget.h"
 
+static NSUInteger kNumberOfPages = 5;
+
 @implementation DashboardViewController
 
 @synthesize addButton;
 @synthesize widgetsView;
 @synthesize containerView;
-
 @synthesize newButton;
+@synthesize pageControl, scrollView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,27 +62,97 @@
 
     self.widgetsView = [[[DashboardWidgetsView alloc] initWithFrame:CGRectMake(0, appSize.height - WIDGETVIEW_H, appSize.width, WIDGETVIEW_H) delegate:self] autorelease];
 	[self.view insertSubview:self.widgetsView belowSubview:self.containerView];
+
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.contentSize = CGSizeMake(self.containerView.frame.size.width * kNumberOfPages, self.containerView.frame.size.height);
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.scrollsToTop = NO;
+    self.scrollView.delegate = self;
+
+    self.pageControl.numberOfPages = kNumberOfPages;
+    self.pageControl.currentPage = 0;
+}
+
+- (IBAction)changePage:(id)sender {
+    int page = pageControl.currentPage;
+
+	// update the scroll view to the appropriate page
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [scrollView scrollRectToVisible:frame animated:YES];
+
+	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+    pageControlUsed = YES;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
+    // which a scroll event generated from the user hitting the page control triggers updates from
+    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
+    if (pageControlUsed) {
+        // do nothing - the scroll was initiated from the page control, not the user dragging
+        return;
+    }
+
+    // Switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    pageControl.currentPage = page;
+}
+
+// At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    pageControlUsed = NO;
+}
+
+// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlUsed = NO;
 }
 
 #pragma mark -
 #pragma mark DashboardWidgetsViewDelegate
 
-- (void)widgetDidAdd:(DashboardWidget *)widget {
-    [self.containerView addSubview:widget];
+- (void)widgetDidAdd:(NSString *)path {
+    // Generate random string as widget identifier
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    NSString *identifier = (NSString *)CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+
+    NSBundle *widgetBundle = [NSBundle bundleWithPath:path];
+
+    NSInteger width = [[widgetBundle objectForInfoDictionaryKey:@"Width"] intValue];
+    NSInteger height = [[widgetBundle objectForInfoDictionaryKey:@"Height"] intValue];
+
+    CGRect frame = CGRectMake(floor((self.containerView.frame.size.width - width) / 2), floor((self.containerView.frame.size.height - height) / 2), width, height);
+
+    // Create widget
+    DashboardWidget *widget = [[DashboardWidget alloc] initWithFrame:[self.containerView convertRect:frame toView:self.scrollView] path:path identifier:identifier];
+
+    [self.scrollView addSubview:widget];
+
+    // Release stuff
+    [widget release];
+    [identifier release];
     
     /*
      // Add the view and ripple
      [UIView beginAnimations:@"ripple" context:nil];
      [UIView setAnimationDuration:2.0];
-     [UIView setAnimationTransition:110 forView:self.containerView cache:YES];
-     [self.containerView addSubview:widget];
+     [UIView setAnimationTransition:110 forView:self.scrollView cache:YES];
+     [self.scrollView addSubview:widget];
      [UIView commitAnimations];
      */
 }
 
 - (void)itemDidRemove:(NSString *)bundleIdentifier {
     // Remove all widgets with the same bundle identifier
-    for (DashboardWidget *widget in [self.containerView subviews]) {
+    for (DashboardWidget *widget in [self.scrollView subviews]) {
         if ([widget isKindOfClass:[DashboardWidget class]]) {
             if ([widget.bundleIdentifier isEqualToString:bundleIdentifier]) {
                 [widget closeWidget];
@@ -172,7 +244,7 @@
     [self.view bringSubviewToFront:self.newButton];
     
     // Show close button for all widgets and fix positions
-    for (DashboardWidget *widget in [self.containerView subviews]) {
+    for (DashboardWidget *widget in [self.scrollView subviews]) {
         if ([widget isKindOfClass:[DashboardWidget class]]) {
             widget.closeButton.hidden = NO;
             [widget layoutSubviews];
@@ -209,7 +281,7 @@
     [self.view sendSubviewToBack:self.widgetsView];
 
     // Hide close buttons for all widgets
-    for (DashboardWidget *widget in [self.containerView subviews]) {
+    for (DashboardWidget *widget in [self.scrollView subviews]) {
         if ([widget isKindOfClass:[DashboardWidget class]]) {
             widget.closeButton.hidden = YES;
         }
@@ -233,6 +305,9 @@
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    self.scrollView.contentSize = CGSizeMake(self.containerView.frame.size.width * kNumberOfPages, self.containerView.frame.size.height);
+    [self changePage:nil];
+
     if (showingWidgetsView) {
         [self hideWidgetsView:NO];
     }
@@ -251,7 +326,7 @@
     self.newButton.frame = newButtonFrame;
     self.widgetsView.frame = widgetsViewFrame;
 
-    for (DashboardWidget *widget in [self.containerView subviews]) {
+    for (DashboardWidget *widget in [self.scrollView subviews]) {
         if ([widget isKindOfClass:[DashboardWidget class]]) {
             [widget setNeedsLayout];
         }
@@ -284,6 +359,8 @@
 	self.widgetsView = nil;
     self.containerView = nil;
     self.newButton = nil;
+    self.pageControl = nil;
+    self.scrollView = nil;
     [super dealloc];
 }
 

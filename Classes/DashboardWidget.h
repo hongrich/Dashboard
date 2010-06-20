@@ -57,6 +57,9 @@
 
     // TODO
     id js_onreceiverequest;
+
+    NSTimer *_springLoadTimer;
+    BOOL _springing;
 }
 
 - (void)initialize;

@@ -28,6 +28,9 @@
 
 #import "DashboardWidget.h"
 
+static const CGFloat kSpringLoadFraction = 0.18;
+static const NSTimeInterval kSpringLoadTimeInterval = 0.5;
+
 @implementation DashboardWidget
 
 @synthesize imageView;
@@ -169,16 +172,21 @@
     self.path = nil;
     self.bundleIdentifier = nil;
     self.js_identifier = nil;
+
+    [_springLoadTimer invalidate];
+    _springLoadTimer = nil;
     [super dealloc];
 }
 
 -(void)layoutSubviews {
     CGRect aFrame = self.frame;
+    /*
     if (aFrame.origin.x < 0.0) {
         aFrame.origin.x = 0.0;
     }else if (aFrame.origin.x + aFrame.size.width > [self superview].frame.size.width) {
         aFrame.origin.x = [self superview].frame.size.width - aFrame.size.width;
     }
+    */
     if (aFrame.origin.y < 0.0) {
         aFrame.origin.y = 0.0;
     }else if (aFrame.origin.y + aFrame.size.height > [self superview].frame.size.height) {
@@ -210,29 +218,98 @@
 	}
 }
 
+- (void)springLoadTimer:(NSTimer*)timer {
+    _springLoadTimer = nil;
+    UIScrollView *_scrollView = (UIScrollView*)(self.superview);
+
+    if ([(NSNumber*)timer.userInfo boolValue]) { // Previous page
+        CGFloat newX = _scrollView.contentOffset.x - _scrollView.frame.size.width;
+        if (newX >= 0) {
+            CGPoint offset = CGPointMake(newX, 0);
+            CGPoint newCenter = CGPointMake(self.center.x - _scrollView.frame.size.width, self.center.y);
+
+            _springing = YES;
+
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(springingDidStop)];
+            self.center = newCenter;
+            [_scrollView setContentOffset:offset animated:NO];
+            [UIView commitAnimations];
+        }
+    } else { // Next page
+        CGFloat newX = _scrollView.contentOffset.x + _scrollView.frame.size.width;
+        if (newX <= _scrollView.contentSize.width - _scrollView.frame.size.width) {
+            CGPoint offset = CGPointMake(newX, 0);
+            CGPoint newCenter = CGPointMake(self.center.x + _scrollView.frame.size.width, self.center.y);
+
+            _springing = YES;
+
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(springingDidStop)];
+            self.center = newCenter;
+            [_scrollView setContentOffset:offset animated:NO];
+            [UIView commitAnimations];
+        }
+    }
+}
+
+- (void)springingDidStop {
+    _springing = NO;
+}
+
 - (void)handleDrag:(UIGestureRecognizer *)sender {
-    CGPoint loc = [sender locationInView:self.superview];
+    CGPoint loc = [sender locationInView:self.superview.superview];
     CGRect aFrame;
     float deltaX, deltaY;
     
+    CGFloat springLoadDistance;
+    BOOL goToPreviousPage, goToNextPage;
+    CGPoint c = [self.superview convertPoint:self.center toView:self.superview.superview];
+
+    // Do not moving widget during springing animation
+    if (_springing) return;
+
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             self.prevLoc = loc;
             [self.superview bringSubviewToFront:self];
             self.alpha = 0.7;
             [self.webView stringByEvaluatingJavaScriptFromString:@"widget.ondragstart();"];
+
+            [_springLoadTimer invalidate];
+            _springLoadTimer = nil;
+
             break;
         case UIGestureRecognizerStateChanged:
+            // Start timer for going to a different page if widget is dragged to the edge
+            springLoadDistance = self.frame.size.width * kSpringLoadFraction;
+            goToPreviousPage = c.x - springLoadDistance < 0;
+            goToNextPage = ((self.superview.frame.size.width - c.x) - springLoadDistance) < 0;
+            if (goToPreviousPage || goToNextPage) {
+                if (!_springLoadTimer) {
+                    _springLoadTimer = [NSTimer scheduledTimerWithTimeInterval:kSpringLoadTimeInterval
+                                                                        target:self selector:@selector(springLoadTimer:)
+                                                                      userInfo:[NSNumber numberWithBool:goToPreviousPage] repeats:NO];
+                }
+            } else {
+                [_springLoadTimer invalidate];
+                _springLoadTimer = nil;
+            }
+
             aFrame = self.frame;
             deltaX = loc.x - self.prevLoc.x;
             deltaY = loc.y - self.prevLoc.y;
             aFrame.origin.x += deltaX;
             aFrame.origin.y += deltaY;
-            
+
+            /*
             if (aFrame.origin.x + aFrame.size.width > [self superview].frame.size.width ||
                 aFrame.origin.x < 0.0) {
                 aFrame.origin.x -= deltaX;
             }
+             */
             if (aFrame.origin.y + aFrame.size.height > [self superview].frame.size.height ||
                 aFrame.origin.y < 0.0) {
                 aFrame.origin.y -= deltaY;
