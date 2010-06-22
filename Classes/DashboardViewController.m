@@ -230,6 +230,10 @@ static NSUInteger kNumberOfPages = 5;
     containerFrame.size.height -= WIDGETVIEW_H;
     self.containerView.frame = containerFrame;
     
+    CGSize scrollSize = self.scrollView.contentSize;
+    scrollSize.height -= WIDGETVIEW_H;
+    self.scrollView.contentSize = scrollSize;
+
     CGPoint addCenter = self.addButton.center;
     addCenter.y -= WIDGETVIEW_H;
     self.addButton.center = addCenter;
@@ -268,6 +272,10 @@ static NSUInteger kNumberOfPages = 5;
     containerFrame.size.height += WIDGETVIEW_H;
     self.containerView.frame = containerFrame;
 
+    CGSize scrollSize = self.scrollView.contentSize;
+    scrollSize.height += WIDGETVIEW_H;
+    self.scrollView.contentSize = scrollSize;
+
     CGPoint addCenter = self.addButton.center;
     addCenter.y += WIDGETVIEW_H;
     self.addButton.center = addCenter;
@@ -305,12 +313,12 @@ static NSUInteger kNumberOfPages = 5;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
-    self.scrollView.contentSize = CGSizeMake(self.containerView.frame.size.width * kNumberOfPages, self.containerView.frame.size.height);
-    [self changePage:nil];
-
     if (showingWidgetsView) {
         [self hideWidgetsView:NO];
     }
+
+    self.scrollView.contentSize = CGSizeMake(self.containerView.frame.size.width * kNumberOfPages, self.containerView.frame.size.height);
+    [self changePage:nil];
 
     CGSize appSize = self.containerView.bounds.size;
     CGRect addButtonFrame = self.addButton.frame;
