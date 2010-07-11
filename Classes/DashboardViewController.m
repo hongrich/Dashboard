@@ -72,6 +72,16 @@ static NSUInteger kNumberOfPages = 5;
 
     self.pageControl.numberOfPages = kNumberOfPages;
     self.pageControl.currentPage = 0;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(widgetOpenURL:) name:@"widgetOpenURL" object:nil];
+}
+
+- (void)widgetOpenURL:(NSNotification*)notification {
+    NSURL *url = [notification object];
+    DashboardBrowserViewController *browserView = [[DashboardBrowserViewController alloc] initWithHome:url];
+    browserView.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:browserView animated:YES];
+    [browserView release];
 }
 
 - (IBAction)changePage:(id)sender {

@@ -453,8 +453,12 @@ static const NSTimeInterval kSpringLoadTimeInterval = 0.5;
 - (void)js_openURL:(NSString *)url {
     NSURL *aURL = [NSURL URLWithString:url];
     if ([[aURL scheme] isEqualToString:@"http"]) {
-        [[UIApplication sharedApplication] openURL:aURL];
+        [self performSelectorOnMainThread:@selector(openURLOnMainThread:) withObject:aURL waitUntilDone:NO];
     }
+}
+
+- (void)openURLOnMainThread:(NSURL*)url {
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"widgetOpenURL" object:url]];
 }
 
 - (NSString *)js_preferenceForKey:(NSString *)key {
