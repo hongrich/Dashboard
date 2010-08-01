@@ -307,6 +307,28 @@
 }
 
 - (void)downloadItem:(DashboardDownloadItem *)downloadItem didFinishWithData:(NSData *)data {
+    if ([[[downloadItem.request URL] path] hasSuffix:@".zip"] || [[[downloadItem.request URL] path] hasSuffix:@".widget"]) {
+        [self handleWidgetDownloadItem:downloadItem data:data];
+    } else if ([[[downloadItem.request URL] path] hasSuffix:@".xml"]) {
+        [self handleGadgetDownloadItem:downloadItem data:data];
+    }
+}
+
+#pragma mark -
+#pragma mark downloadItem helpers
+- (void)handleGadgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data {
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    DashboardGadget *gadget = [[DashboardGadget alloc] init];
+    [parser setDelegate:gadget];
+    [parser parse];
+    NSString *path = [gadget createWidget];
+    // Replace DownloadItem with WidgetItem
+    [self replaceItem:downloadItem withItem:path];
+    [parser release];
+    [gadget release];
+}
+
+- (void)handleWidgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data {
     NSString *widgetPath = [DashboardAppDelegate widgetPath];
     NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"widget"];
 	NSString *filePath = [tmpPath stringByAppendingPathComponent:@"widget.zip"];
@@ -320,14 +342,14 @@
         [self downloadItem:downloadItem didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:nil]];
         goto FINISH;
     }
-    
+
     // Move all valid widgets to widgetPath
     NSArray *bundleWidgets = [NSBundle pathsForResourcesOfType:@"wdgt" inDirectory:tmpPath];
     NSString *widget = [bundleWidgets lastObject];
     NSBundle *widgetBundle = [NSBundle bundleWithPath:widget];
     NSString *name = [widgetBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     NSString *path = [widget stringByReplacingOccurrencesOfString:[tmpPath stringByAppendingString:@"/"] withString:@""];
-    
+
     // Hack for stupid widget dev that can't name Info.plist or didn't include a correct key
     if (!name) {
         name = [path stringByReplacingOccurrencesOfString:@".wdgt" withString:@""];

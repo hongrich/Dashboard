@@ -125,7 +125,7 @@
 
 - (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     // TODO: move this code out of thise class so DashboardBrowserViewController can be reused.
-    if ([[[request URL] path] hasSuffix:@".zip"] || [[[request URL] path] hasSuffix:@".widget"]) {
+    if ([[[request URL] path] hasSuffix:@".zip"] || [[[request URL] path] hasSuffix:@".widget"] || [[[request URL] path] hasSuffix:@".xml"]) {
         if ([[self parentViewController] isKindOfClass:[DashboardViewController class]]) {
             DashboardViewController *viewController = (DashboardViewController*)[self parentViewController];
             [viewController.widgetsView addItem:request];

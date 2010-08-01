@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body {
+    margin: 0;
+  }
+
+  #front {
+    display: block;
+    background-color: #FFF;
+    -webkit-border-radius: 0.5em;
+    border-color: #000;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+  }
+
+  #gadgets {
+    background: white;
+    -apple-dashboard-region: dashboard-region(control rectangle 5px 5px 5px 5px);
+  }
+
+  #gadget {
+    background: transparent;
+    width: 95%;
+    height: 75%;
+  }
+  </style>
+</head>
+<body>
+  <div id="front">
+    <div id="gadgets">
+      <iframe id="gadget" name="gadget" src="inner.html" frameborder="0" scrolling="no">
+      </iframe>
+    </div>
+  </div>
+</body>
+</html>

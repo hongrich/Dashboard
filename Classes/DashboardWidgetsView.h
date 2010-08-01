@@ -32,6 +32,7 @@
 #import "DashboardAppDelegate.h"
 #import "DashboardDownloadItem.h"
 #import "DashboardWidget.h"
+#import "DashboardGadget.h"
 
 @protocol DashboardWidgetsViewDelegate;
 
@@ -81,6 +82,9 @@
 - (void)replaceItem:(DashboardDownloadItem*)downloadItem withItem:(NSString*)path;
 - (void)addItem:(NSURLRequest *)request;
 - (void)removeItem:(id)sender;
+
+- (void)handleGadgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data;
+- (void)handleWidgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data;
 
 @end
 
