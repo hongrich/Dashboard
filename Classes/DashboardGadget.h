@@ -32,17 +32,17 @@
 
 @interface DashboardGadget : NSObject {
     NSString *title;
-    NSString *content;
+    NSString *url;
     NSInteger height;
     NSInteger width;
 }
 
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *content;
+@property (nonatomic, retain) NSString *url;
 @property (nonatomic) NSInteger height;
 @property (nonatomic) NSInteger width;
 
-- (DashboardGadget*) init;
+- (DashboardGadget*) initWithUrl:(NSString*) aUrl;
 - (NSString*) createWidget;
 
 @end

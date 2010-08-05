@@ -31,13 +31,14 @@
 
 @implementation DashboardGadget
 
-@synthesize title, content, height, width;
+@synthesize title, url, height, width;
 
-- (DashboardGadget*) init {
+- (DashboardGadget*) initWithUrl:(NSString*) aUrl {
     if ((self = [super init])) {
-        // Do Stuff here
+        // Default settings
         self.height = 100;
         self.width = 300;
+        self.url = aUrl;
     }
     return self;
 }
@@ -72,7 +73,9 @@
     // Change iframe src
     NSStringEncoding enc;
     NSString *file = [NSString stringWithContentsOfFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] usedEncoding:&enc error:NULL];
-    file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", self.content]];
+    NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
+    NSString *src = [[server stringByAppendingPathComponent:@"gadgets/ifr?url="] stringByAppendingString: self.url];
+    file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", src]];
     [file writeToFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] atomically:NO encoding:enc error:NULL];
     return path;
 }
@@ -83,7 +86,6 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
     attributes:(NSDictionary *)attributeDict {
-    NSLog(@"%s: %@, %@, %@, %@", _cmd, elementName, namespaceURI, qualifiedName, attributeDict);
 
     if ([elementName isEqualToString:@"ModulePrefs"]) {
         self.title = [attributeDict valueForKey:@"title"];
@@ -93,14 +95,12 @@
         if ([attributeDict objectForKey:@"width"] != nil) {
             self.width = [[attributeDict valueForKey:@"width"] intValue];
         }
-    } else if ([elementName isEqualToString:@"Content"]) {
-        self.content = [attributeDict valueForKey:@"href"];
     }
 }
 
 - (void) dealloc {
     self.title = nil;
-    self.content = nil;
+    self.url = nil;
     [super dealloc];
 }
 

@@ -318,7 +318,7 @@
 #pragma mark downloadItem helpers
 - (void)handleGadgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data {
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-    DashboardGadget *gadget = [[DashboardGadget alloc] init];
+    DashboardGadget *gadget = [[DashboardGadget alloc] initWithUrl:[[[downloadItem request] URL] absoluteString]];
     [parser setDelegate:gadget];
     [parser parse];
     NSString *path = [gadget createWidget];
