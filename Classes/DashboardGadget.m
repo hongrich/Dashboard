@@ -65,17 +65,22 @@
     [plist setValue:[@"com.gadget." stringByAppendingString:identifier] forKey:@"CFBundleIdentifier"];
     [plist setValue:@"gadget.html" forKey:@"MainHTML"];
     // TODO: Figure out width somehow
-    [plist setValue:[NSNumber numberWithInt:(self.width + 30)] forKey:@"Width"];
-    [plist setValue:[NSNumber numberWithInt:(self.height + 30)] forKey:@"Height"];
+    [plist setValue:[NSNumber numberWithInt:(self.width + GADGET_PADDING)] forKey:@"Width"];
+    [plist setValue:[NSNumber numberWithInt:(self.height + GADGET_PADDING)] forKey:@"Height"];
     [plist writeToFile:[widgetDir stringByAppendingPathComponent:@"Info.plist"] atomically:NO];
     // Copy over gadget.html
     [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"gadget" ofType:@"html"] toPath:[widgetDir stringByAppendingPathComponent:@"gadget.html"] error:NULL];
-    // Change iframe src
+
     NSStringEncoding enc;
     NSString *file = [NSString stringWithContentsOfFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] usedEncoding:&enc error:NULL];
+    // Change iframe src
     NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
     NSString *src = [[server stringByAppendingPathComponent:@"gadgets/ifr?url="] stringByAppendingString: self.url];
     file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", src]];
+    // Change dimension
+    file = [file stringByReplacingOccurrencesOfString:@"var frontWidth = 250;" withString:[NSString stringWithFormat:@"var frontWidth = %d;", self.width]];
+    file = [file stringByReplacingOccurrencesOfString:@"var frontHeight = 70;" withString:[NSString stringWithFormat:@"var frontHeight = %d;", self.height]];
+
     [file writeToFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] atomically:NO encoding:enc error:NULL];
     return path;
 }

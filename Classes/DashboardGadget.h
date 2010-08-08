@@ -45,4 +45,6 @@
 - (DashboardGadget*) initWithUrl:(NSString*) aUrl;
 - (NSString*) createWidget;
 
+#define GADGET_PADDING 20
+
 @end
