@@ -75,7 +75,7 @@
     NSString *file = [NSString stringWithContentsOfFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] usedEncoding:&enc error:NULL];
     // Change iframe src
     NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
-    NSString *src = [[server stringByAppendingPathComponent:@"gadgets/ifr?url="] stringByAppendingString: self.url];
+    NSString *src = [[server stringByAppendingString:@"/gadgets/ifr?url="] stringByAppendingString: self.url];
     file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", src]];
     // Change dimension
     file = [file stringByReplacingOccurrencesOfString:@"var frontWidth = 250;" withString:[NSString stringWithFormat:@"var frontWidth = %d;", self.width]];
