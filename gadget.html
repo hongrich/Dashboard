@@ -42,7 +42,7 @@
 
   label {
     display: inline-block;
-    width: 50px;
+    width: 80px;
     padding-right: 10px;
     text-align: right;
   }
@@ -79,8 +79,9 @@
   </div>
   <div id="back">
     <div id="form">
-      <label for="width">Width</label><input type="text" id="width" size="21">
-      <label for="height">Height</label><input type="text" id="height" size="21">
+      <label for="width">Width</label><input type="text" pattern="[0-9]*" id="width" size="17">
+      <label for="height">Height</label><input type="text" pattern="[0-9]*" id="height" size="17">
+      <!-- UserPref Section -->
     </div>
   <div id="done"></div>
   </div>
@@ -118,13 +119,41 @@
     // resize widget back to real size
     window.resizeTo(frontWidth + padding, frontHeight + padding);
   };
+  var encode = function(value) {
+    var result = encodeURIComponent(value);
+    return result.replace(/(\s)/g, "+");
+  };
+  var setParameter = function(key, value) {
+    var src = document.getElementById('gadget').src;
+    var index = src.indexOf(key + "=");
+    if (index > 0) {
+      var index2 = src.indexOf("&", index);
+      if (index2 < 0) {
+        index2 = src.length;
+      }
+      src = src.substring(0, index + key.length + 1) + encode(value) + src.substring(index2);
+    } else {
+      src = src + '&' + key + '=' + encode(value);
+    }
+    document.getElementById('gadget').src = src;
+  };
   var updatePrefs = function() {
     frontWidth = parseInt(document.getElementById("width").value, 10);
     frontHeight = parseInt(document.getElementById("height").value, 10);
     document.getElementById("front").style.width = frontWidth + 'px';
     document.getElementById("front").style.height = frontHeight + 'px';
 
-    // TODO: update gadget user prefs here
+    var form = document.getElementById("form");
+    var child = form.firstElementChild;
+    do {
+      // TODO: support bool, hidden and list types
+      if ((child.tagName == 'INPUT' || child.tagName == 'SELECT') && child.id.indexOf('UserPref_') == 0 && child.value != null) {
+        // Set url param
+        var urlparam = child.getAttribute('urlparam');
+        setParameter("up_" + urlparam, child.value);
+        // TODO: also save preference
+      }
+    } while ((child = child.nextElementSibling) != null);
   };
 
   new AppleGlassButton(document.getElementById("done"), "Done", showFront);

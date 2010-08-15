@@ -31,7 +31,7 @@
 
 @implementation DashboardGadget
 
-@synthesize title, url, height, width;
+@synthesize title, url, height, width, prefHtml, parsingEnum;
 
 - (DashboardGadget*) initWithUrl:(NSString*) aUrl {
     if ((self = [super init])) {
@@ -39,6 +39,8 @@
         self.height = 100;
         self.width = 300;
         self.url = aUrl;
+        self.prefHtml = [NSString string];
+        self.parsingEnum = NO;
     }
     return self;
 }
@@ -61,8 +63,7 @@
     [plist setValue:[NSNumber numberWithBool:YES] forKey:@"AllowFullAccess"];
     [plist setValue:self.title forKey:@"CFBundleDisplayName"];
     [plist setValue:self.title forKey:@"CFBundleName"];
-    NSString *identifier = (NSString *)CFUUIDCreateString(NULL, CFUUIDCreate(NULL));
-    [plist setValue:[@"com.gadget." stringByAppendingString:identifier] forKey:@"CFBundleIdentifier"];
+    [plist setValue:[@"com.gadget." stringByAppendingString:[self.title stringByReplacingOccurrencesOfString:@" " withString:@""]] forKey:@"CFBundleIdentifier"];
     [plist setValue:@"gadget.html" forKey:@"MainHTML"];
     // TODO: Figure out width somehow
     [plist setValue:[NSNumber numberWithInt:(self.width + GADGET_PADDING)] forKey:@"Width"];
@@ -80,6 +81,8 @@
     // Change dimension
     file = [file stringByReplacingOccurrencesOfString:@"var frontWidth = 250;" withString:[NSString stringWithFormat:@"var frontWidth = %d;", self.width]];
     file = [file stringByReplacingOccurrencesOfString:@"var frontHeight = 70;" withString:[NSString stringWithFormat:@"var frontHeight = %d;", self.height]];
+    // Add more UserPrefs
+    file = [file stringByReplacingOccurrencesOfString:@"<!-- UserPref Section -->" withString:self.prefHtml];
 
     [file writeToFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] atomically:NO encoding:enc error:NULL];
     return path;
@@ -94,18 +97,62 @@
 
     if ([elementName isEqualToString:@"ModulePrefs"]) {
         self.title = [attributeDict valueForKey:@"title"];
+        if ([attributeDict objectForKey:@"directory_title"] != nil) {
+            self.title = [attributeDict valueForKey:@"directory_title"];
+        }
         if ([attributeDict objectForKey:@"height"] != nil) {
             self.height = [[attributeDict valueForKey:@"height"] intValue];
         }
         if ([attributeDict objectForKey:@"width"] != nil) {
             self.width = [[attributeDict valueForKey:@"width"] intValue];
         }
+    } else if ([elementName isEqualToString:@"UserPref"]) {
+        NSString *name = [attributeDict valueForKey:@"name"];
+        NSString *datatype = [attributeDict valueForKey:@"datatype"];
+        NSString *display_name = name;
+        if ([attributeDict objectForKey:@"display_name"] != nil) {
+            display_name = [attributeDict objectForKey:@"display_name"];
+        }
+        NSString *urlparam = name;
+        if ([attributeDict objectForKey:@"urlparam"] != nil) {
+            urlparam = [attributeDict objectForKey:@"urlparam"];
+        }
+        NSString *default_value = @"";
+        if ([attributeDict objectForKey:@"default_value"] != nil) {
+            default_value = [attributeDict objectForKey:@"default_value"];
+        }
+        // TODO: support 'required'
+
+        self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<label for='UserPref_%@'>%@</label>", name, display_name];
+        // TODO: support bool, hidden and list types
+        // datatype defaults to string if not specified
+        if (datatype == nil || [datatype isEqualToString:@"string"]) {
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<input id='UserPref_%@' urlparam='%@' value='%@' type='text' size='17'>", name, urlparam, default_value];
+        } else if ([datatype isEqualToString:@"enum"]) {
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<select id='UserPref_%@' urlparam='%@' value='%@'>", name, urlparam, default_value];
+            self.parsingEnum = YES;
+        }
+    } else if (self.parsingEnum == YES && [elementName isEqualToString:@"EnumValue"]) {
+        NSString *value = [attributeDict valueForKey:@"value"];
+        NSString *display_value = value;
+        if ([attributeDict objectForKey:@"display_value"] != nil) {
+            display_value = [attributeDict objectForKey:@"display_value"];
+        }
+        self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<option value='%@'>%@</option>", value, display_value];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    if (self.parsingEnum == YES && [elementName isEqualToString:@"UserPref"]) {
+        self.parsingEnum = NO;
+        self.prefHtml = [self.prefHtml stringByAppendingString:@"</select>"];
     }
 }
 
 - (void) dealloc {
     self.title = nil;
     self.url = nil;
+    self.prefHtml = nil;
     [super dealloc];
 }
 

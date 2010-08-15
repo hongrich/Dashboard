@@ -35,12 +35,16 @@
     NSString *url;
     NSInteger height;
     NSInteger width;
+    NSString *prefHtml;
+    BOOL parsingEnum;
 }
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *url;
 @property (nonatomic) NSInteger height;
 @property (nonatomic) NSInteger width;
+@property (nonatomic, retain) NSString *prefHtml;
+@property (nonatomic) BOOL parsingEnum;
 
 - (DashboardGadget*) initWithUrl:(NSString*) aUrl;
 - (NSString*) createWidget;
