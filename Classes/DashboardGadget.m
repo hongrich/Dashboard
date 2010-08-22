@@ -38,7 +38,8 @@
         // Default settings
         self.height = 100;
         self.width = 300;
-        self.url = aUrl;
+        NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
+        self.url = [[server stringByAppendingString:@"/gadgets/ifr?url="] stringByAppendingString: aUrl];
         self.prefHtml = [NSString string];
         self.parsingEnum = NO;
     }
@@ -75,9 +76,7 @@
     NSStringEncoding enc;
     NSString *file = [NSString stringWithContentsOfFile:[widgetDir stringByAppendingPathComponent:@"gadget.html"] usedEncoding:&enc error:NULL];
     // Change iframe src
-    NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
-    NSString *src = [[server stringByAppendingString:@"/gadgets/ifr?url="] stringByAppendingString: self.url];
-    file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", src]];
+    file = [file stringByReplacingOccurrencesOfString:@"src=\"inner.html\"" withString:[NSString stringWithFormat:@"src=\"%@\"", self.url]];
     // Change dimension
     file = [file stringByReplacingOccurrencesOfString:@"var frontWidth = 250;" withString:[NSString stringWithFormat:@"var frontWidth = %d;", self.width]];
     file = [file stringByReplacingOccurrencesOfString:@"var frontHeight = 70;" withString:[NSString stringWithFormat:@"var frontHeight = %d;", self.height]];
@@ -123,14 +122,31 @@
         }
         // TODO: support 'required'
 
-        self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<label for='UserPref_%@'>%@</label>", name, display_name];
-        // TODO: support bool, hidden and list types
+        if (![datatype isEqualToString:@"hidden"]) {
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<label for='UserPref_%@'>%@</label>", name, display_name];
+        }
+        // TODO: support list type
         // datatype defaults to string if not specified
         if (datatype == nil || [datatype isEqualToString:@"string"]) {
             self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<input id='UserPref_%@' urlparam='%@' value='%@' type='text' size='17'>", name, urlparam, default_value];
         } else if ([datatype isEqualToString:@"enum"]) {
             self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<select id='UserPref_%@' urlparam='%@' value='%@'>", name, urlparam, default_value];
             self.parsingEnum = YES;
+        } else if ([datatype isEqualToString:@"hidden"]) {
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<input id='UserPref_%@' urlparam='%@' value='%@' type='hidden'>", name, urlparam, default_value];
+        } else if ([datatype isEqualToString:@"bool"]) {
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<span id='UserPref_%@' urlparam='%@'>", name, urlparam];
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<input id='UserPref_%@_true' type='radio' name='UserPref_%@' value='true'", name, name];
+            if ([default_value isEqualToString:@"true"]) {
+                self.prefHtml = [self.prefHtml stringByAppendingString:@"checked"];
+            }
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"><label for='UserPref_%@_true'>True</label>", name];
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<input id='UserPref_%@_false' type='radio' name='UserPref_%@' value='false'", name, name];
+            if ([default_value isEqualToString:@"false"]) {
+                self.prefHtml = [self.prefHtml stringByAppendingString:@"checked"];
+            }
+            self.prefHtml = [self.prefHtml stringByAppendingFormat:@"><label for='UserPref_%@_false'>False</label>", name];
+            self.prefHtml = [self.prefHtml stringByAppendingString:@"</span>"];
         }
     } else if (self.parsingEnum == YES && [elementName isEqualToString:@"EnumValue"]) {
         NSString *value = [attributeDict valueForKey:@"value"];
@@ -139,6 +155,11 @@
             display_value = [attributeDict objectForKey:@"display_value"];
         }
         self.prefHtml = [self.prefHtml stringByAppendingFormat:@"<option value='%@'>%@</option>", value, display_value];
+    } else if ([elementName isEqualToString:@"Content"]) {
+        NSString *type = [attributeDict valueForKey:@"type"];
+        if ([type isEqualToString:@"url"]) {
+            self.url = [attributeDict valueForKey:@"href"];
+        }
     }
 }
 
