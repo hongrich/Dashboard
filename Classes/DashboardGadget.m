@@ -69,6 +69,8 @@
     // TODO: Figure out width somehow
     [plist setValue:[NSNumber numberWithInt:(self.width + GADGET_PADDING)] forKey:@"Width"];
     [plist setValue:[NSNumber numberWithInt:(self.height + GADGET_PADDING)] forKey:@"Height"];
+    [plist setValue:[NSNumber numberWithInt:15] forKey:@"CloseBoxInsetX"];
+    [plist setValue:[NSNumber numberWithInt:15] forKey:@"CloseBoxInsetY"];
     [plist writeToFile:[widgetDir stringByAppendingPathComponent:@"Info.plist"] atomically:NO];
     // Copy over gadget.html
     [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"gadget" ofType:@"html"] toPath:[widgetDir stringByAppendingPathComponent:@"gadget.html"] error:NULL];
