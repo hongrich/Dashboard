@@ -346,6 +346,11 @@ static NSUInteger kNumberOfPages = 5;
 
     for (DashboardWidget *widget in [self.scrollView subviews]) {
         if ([widget isKindOfClass:[DashboardWidget class]]) {
+            // Update x position to keep widgets on the same page as they were before the rotation
+            // (Don't ask me about the magic constant)
+            NSInteger offset = (NSInteger)widget.center.x % (NSInteger)self.containerView.frame.size.height;
+            NSInteger page = widget.center.x / self.containerView.frame.size.height;
+            widget.center = CGPointMake(offset + page * self.containerView.frame.size.width - page * 20, widget.center.y);
             [widget setNeedsLayout];
         }
     }
