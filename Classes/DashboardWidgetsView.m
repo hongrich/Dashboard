@@ -310,22 +310,31 @@
     if ([[[downloadItem.request URL] path] hasSuffix:@".zip"] || [[[downloadItem.request URL] path] hasSuffix:@".widget"]) {
         [self handleWidgetDownloadItem:downloadItem data:data];
     } else if ([[[downloadItem.request URL] path] hasSuffix:@".xml"]) {
-        [self handleGadgetDownloadItem:downloadItem data:data];
+        [NSThread detachNewThreadSelector:@selector(handleGadgetDownloadItem:) toTarget:self withObject:[NSArray arrayWithObjects:downloadItem, data, nil]];
     }
 }
 
 #pragma mark -
 #pragma mark downloadItem helpers
-- (void)handleGadgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data {
+- (void)handleGadgetDownloadItem:(NSArray *)args {
+    assert(![NSThread isMainThread]);
+    // Create autorelease pool because this is running in a new thread
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+    DashboardDownloadItem *downloadItem = [args objectAtIndex:0];
+    NSData *data = [args objectAtIndex:1];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     DashboardGadget *gadget = [[DashboardGadget alloc] initWithUrl:[[[downloadItem request] URL] absoluteString]];
     [parser setDelegate:gadget];
     [parser parse];
     NSString *path = [gadget createWidget];
     // Replace DownloadItem with WidgetItem
-    [self replaceItem:downloadItem withItem:path];
+    [self performSelectorOnMainThread:@selector(replaceItemFromNewThread:) withObject:[NSArray arrayWithObjects:downloadItem, path, nil] waitUntilDone:NO];
     [parser release];
     [gadget release];
+
+    // release autorelease pool
+    [pool release];
 }
 
 - (void)handleWidgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data {
@@ -459,6 +468,10 @@ WARNING:
     item.frame = itemFrame;
     
     [UIView commitAnimations];
+}
+
+- (void)replaceItemFromNewThread:(NSArray *)args {
+    [self replaceItem:[args objectAtIndex:0] withItem:[args objectAtIndex:1]];
 }
 
 - (void)replaceItem:(DashboardDownloadItem*)downloadItem withItem:(NSString*)path {

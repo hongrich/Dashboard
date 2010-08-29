@@ -36,6 +36,8 @@
     NSInteger height;
     NSInteger width;
     NSString *prefHtml;
+    NSString *screenshot;
+    NSString *thumbnail;
     BOOL parsingEnum;
 }
 
@@ -44,6 +46,8 @@
 @property (nonatomic) NSInteger height;
 @property (nonatomic) NSInteger width;
 @property (nonatomic, retain) NSString *prefHtml;
+@property (nonatomic, retain) NSString *screenshot;
+@property (nonatomic, retain) NSString *thumbnail;
 @property (nonatomic) BOOL parsingEnum;
 
 - (DashboardGadget*) initWithUrl:(NSString*) aUrl;

@@ -83,7 +83,7 @@
 - (void)addItem:(NSURLRequest *)request;
 - (void)removeItem:(id)sender;
 
-- (void)handleGadgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data;
+- (void)handleGadgetDownloadItem:(NSArray*)args;
 - (void)handleWidgetDownloadItem:(DashboardDownloadItem *)downloadItem data:(NSData *)data;
 
 @end

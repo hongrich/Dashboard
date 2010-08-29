@@ -31,7 +31,7 @@
 
 @implementation DashboardGadget
 
-@synthesize title, url, height, width, prefHtml, parsingEnum;
+@synthesize title, url, height, width, prefHtml, parsingEnum, screenshot, thumbnail;
 
 - (DashboardGadget*) initWithUrl:(NSString*) aUrl {
     if ((self = [super init])) {
@@ -41,6 +41,8 @@
         NSString *server = [[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"];
         self.url = [[server stringByAppendingString:@"/gadgets/ifr?url="] stringByAppendingString: aUrl];
         self.prefHtml = [NSString string];
+        self.screenshot = nil;
+        self.thumbnail = nil;
         self.parsingEnum = NO;
     }
     return self;
@@ -56,9 +58,28 @@
     NSString *widgetDir = [widgetPath stringByAppendingPathComponent:path];
     // Create widget directory
     [[NSFileManager defaultManager] createDirectoryAtPath:widgetDir withIntermediateDirectories:YES attributes:nil error:NULL];
-    // Copy over empty Icon.png and Default.png
-    [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"DashboardIcon" ofType:@"png"] toPath:[widgetDir stringByAppendingPathComponent:@"Icon.png"] error:NULL];
-    [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"DashboardIcon" ofType:@"png"] toPath:[widgetDir stringByAppendingPathComponent:@"Default.png"] error:NULL];
+
+    // Download screenshot and thumbnail as Default.png and Icon.png or use empty icon as backup
+    NSString *emptyIconPath = [[NSBundle mainBundle] pathForResource:@"DashboardIcon" ofType:@"png"];
+    NSString *screenshotPath = [widgetDir stringByAppendingPathComponent:@"Default.png"];
+    if (self.screenshot) {
+        NSURLResponse *response = nil;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.screenshot]];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
+        [data writeToFile:screenshotPath atomically:NO];
+    } else {
+        [[NSFileManager defaultManager] copyItemAtPath:emptyIconPath toPath:screenshotPath error:NULL];
+    }
+    NSString *thumbnailPath = [widgetDir stringByAppendingPathComponent:@"Icon.png"];
+    if (self.thumbnail) {
+        NSURLResponse *response = nil;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.thumbnail]];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:NULL];
+        [data writeToFile:thumbnailPath atomically:NO];
+    } else {
+        [[NSFileManager defaultManager] copyItemAtPath:emptyIconPath toPath:thumbnailPath error:NULL];
+    }
+
     // Create Info.plist
     NSMutableDictionary* plist = [NSMutableDictionary dictionary];
     [plist setValue:[NSNumber numberWithBool:YES] forKey:@"AllowFullAccess"];
@@ -106,6 +127,12 @@
         }
         if ([attributeDict objectForKey:@"width"] != nil) {
             self.width = [[attributeDict valueForKey:@"width"] intValue];
+        }
+        if ([attributeDict objectForKey:@"screenshot"] != nil) {
+            self.screenshot = [attributeDict valueForKey:@"screenshot"];
+        }
+        if ([attributeDict objectForKey:@"thumbnail"] != nil) {
+            self.thumbnail = [attributeDict valueForKey:@"thumbnail"];
         }
     } else if ([elementName isEqualToString:@"UserPref"]) {
         NSString *name = [attributeDict valueForKey:@"name"];
@@ -176,6 +203,8 @@
     self.title = nil;
     self.url = nil;
     self.prefHtml = nil;
+    self.screenshot = nil;
+    self.thumbnail = nil;
     [super dealloc];
 }
 
