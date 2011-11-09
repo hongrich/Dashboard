@@ -86,7 +86,11 @@
         actionSheet = nil;
     }
     [self.webView stopLoading];
-    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    if ([self respondsToSelector:@selector(presentingViewController)]) {
+        [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+    } else {
+        [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)goHome {
@@ -128,12 +132,23 @@
     BOOL allowOpenSocial = [[[NSUserDefaults standardUserDefaults] stringForKey:@"preference_opensocial_server"] length] > 0;
     if ([[[request URL] path] hasSuffix:@".zip"] || [[[request URL] path] hasSuffix:@".widget"] ||
         (allowOpenSocial && [[[request URL] path] hasSuffix:@".xml"])) {
-        if ([[self parentViewController] isKindOfClass:[DashboardViewController class]]) {
-            DashboardViewController *viewController = (DashboardViewController*)[self parentViewController];
-            [viewController.widgetsView addItem:request];
+        if ([self respondsToSelector:@selector(presentingViewController)]) {
+            if ([[self presentingViewController] isKindOfClass:[DashboardViewController class]]) {
+                DashboardViewController *viewController = (DashboardViewController*)[self presentingViewController];
+                [viewController.widgetsView addItem:request];
+            }
+        } else {
+            if ([[self parentViewController] isKindOfClass:[DashboardViewController class]]) {
+                DashboardViewController *viewController = (DashboardViewController*)[self parentViewController];
+                [viewController.widgetsView addItem:request];
+            }
         }
         
-        [[self parentViewController] dismissModalViewControllerAnimated:YES];
+        if ([self respondsToSelector:@selector(presentingViewController)]) {
+            [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+        } else {
+            [[self parentViewController] dismissModalViewControllerAnimated:YES];
+        }
         
         return NO;
     }
