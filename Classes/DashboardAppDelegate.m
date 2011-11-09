@@ -126,6 +126,10 @@ static NSString *_widgetResourcesPath = nil;
      */
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [self applicationWillTerminate:application];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [self.viewController.widgetsView reloadWidgets];
 }
